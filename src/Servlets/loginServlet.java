@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
+import org.hibernate.engine.transaction.jta.platform.internal.BorlandEnterpriseServerJtaPlatform;
 import org.hibernate.query.Query;
 
 import model.*;
@@ -48,7 +49,9 @@ public class loginServlet extends HttpServlet {
 		query.setString("password", password);
 		List<User> obj = query.list();
 		if(!obj.isEmpty())
+			//System.out.println(((User) obj).getName());
 			response.sendRedirect("./perCoachhome.jsp");
+			
 		else  response.sendRedirect("./error.jsp");
 	}
 

@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>登陆</title>
+<title>错误页</title>
 </head>
 <body>
- 找不到用戶
+ 找不到该用戶！
 </body>
 </html>

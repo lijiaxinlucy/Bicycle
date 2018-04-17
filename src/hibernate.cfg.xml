@@ -18,7 +18,7 @@
 		<mapping class="model.Cyclists"/>
 		<mapping class="model.Permissions"/>
 		<mapping class="model.Ph_Table"/>
-		<mapping class="model.Role_Permissions"/>
+		<mapping class="model.Role_Permission"/>
 		<mapping class="model.Role_User"/>
 		<mapping class="model.Roles"/>
 			
