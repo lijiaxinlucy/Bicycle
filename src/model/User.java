@@ -10,16 +10,16 @@ import javax.persistence.Table;
 public class User {
 	
 	@Id
-	private int UserID;//主键
+	private String UserID;//主键
 	@Column
 	private String UserName;
 	@Column
 	private String Password;
 	
-	public int getId() {
+	public String getId() {
 		return UserID;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.UserID = id;
 	}
 
