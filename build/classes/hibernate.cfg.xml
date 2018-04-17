@@ -12,7 +12,16 @@
         <property name="connection.password">pw_user1</property>  
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>  
    		<mapping class="model.User"/>
-		
+		<mapping class="model.Blood_Routine"/>
+		<mapping class="model.C_br"/>
+		<mapping class="model.C_ph"/>
+		<mapping class="model.Cyclists"/>
+		<mapping class="model.Permissions"/>
+		<mapping class="model.Ph_Table"/>
+		<mapping class="model.Role_Permissions"/>
+		<mapping class="model.Role_User"/>
+		<mapping class="model.Roles"/>
+			
     </session-factory>  
 
 </hibernate-configuration>
