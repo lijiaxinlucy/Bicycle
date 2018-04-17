@@ -12,83 +12,99 @@ import javax.persistence.Table;
 public class Blood_Routine {
 	
 	@Id
-	private String PHid;//主键
+	private String BRid;//主键
 	@Column
-	private String PhTestTime;
+	private String BloodTestTime;
 	@Column
-	private int PCO2;
+	private float WBC;
+	@Column           
+	private float RBC;
 	@Column
-	private int PO2;
+	private float HGB;
 	@Column
-	private int BE;
+	private float HCT;
 	@Column
-	private int HCO3;
+	private float MCV;
 	@Column
-	private int TCO2;
+	private float HGB_RBC;
 	@Column
-	private int SO2;
+	private float MCHC;
 	@Column
-	private int K;
+	private float PLT;
 	
 	public String getId() {
-		return PHid;
+		return BRid;
 	}
 	public void setId(String id) {
-		this.PHid = id;
+		this.BRid = id;
 	}
 
-	public String getPhTestTime() {
-		return PhTestTime;
+	public String getBloodTestTime() {
+		return BloodTestTime;
 	}
-	public void setPhTestTime(String time) {
-		this.PhTestTime = time;
-	}
-	
-	public int getPCO2() {
-		return PCO2;
-	}
-	public void setPCO2(int pCO2) {
-		this.PCO2 = pCO2;
+	public void setBloodTestTime(String time) {
+		this.BloodTestTime = time;
 	}
 	
-	public int getPO2() {
-		return PCO2;
+	public float getWBC() {
+		return WBC;
 	}
-	public void setPO2(int pO2) {
-		this.PCO2 = pO2;
-	}
-	
-	public int getBE() {
-		return BE;
-	}
-	public void setBE(int be) {
-		this.BE = be;
+	public void setWBC(float wbc) {
+		this.WBC = wbc;
 	}
 	
-	public int getHCO3() {
-		return HCO3;
+	public float getRBC() {
+		return RBC;
 	}
-	public void setHCO3(int hCO3) {
-		this.HCO3 = hCO3;
-	}
-	
-	public int getSO2() {
-		return SO2;
-	}
-	public void setSO2(int SO2) {
-		this.SO2 = SO2;
+	public void setRBC(float rbc) {
+		this.RBC = rbc;
 	}
 	
-	public int getK() {
-		return K;
+	public float getHGB() {
+		return HGB;
 	}
-	public void setK(int k) {
-		this.K = k;
+	public void setHGB(float hge) {
+		this.HGB = hge;
+	}
+	
+	public float getHCT() {
+		return HCT;
+	}
+	public void setHCT(float hct) {
+		this.HCT = hct;
+	}
+	
+	public float getMCV() {
+		return MCV;
+	}
+	public void setMCV(float mcv) {
+		this.MCV = mcv;
+	}
+	
+	public float getHGB_RBC() {
+		return HGB_RBC;
+	}
+	public void setHGB_RBC(float hgb_rbc) {
+		this.HGB_RBC = hgb_rbc;
+	}
+	
+	public float getMCHC() {
+		return MCHC;
+	}
+	public void setMCHC(float mchc) {
+		this.MCHC = mchc;
+	}
+	
+	public float getPLT() {
+		return PLT;
+	}
+	public void setPLT(float plt) {
+		this.PLT = plt;
 	}
 	@Override
 	public String toString() {
-		return "athlete [PHid=" + PHid + ", PhTestTime="+PhTestTime+",PCO2="+ PCO2 +",PO2 ="+
-				PO2 +",BE = "+ BE + ",HCO3 ="+ HCO3 +",TCO2="+ TCO2+ ",SO2="+ SO2 +",K="+ K + "]";
+		return "athlete [BRid=" + BRid+",BloodTestTime="+BloodTestTime+",WBC="+WBC+",RBC="+RBC+
+				",HGB="+HGB+",HCT="+HCT+",MCV="+MCV+",HGB_RBC="+HGB_RBC+",MCHC="+MCHC+",PLT="+PLT+ "]";
 	}
 	
 	

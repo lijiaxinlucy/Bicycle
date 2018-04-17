@@ -16,19 +16,19 @@ public class Ph_Table {
 	@Column
 	private String PhTestTime;
 	@Column
-	private int PCO2;
+	private float PCO2;
 	@Column
-	private int PO2;
+	private float PO2;
 	@Column
-	private int BE;
+	private float BE;
 	@Column
-	private int HCO3;
+	private float HCO3;
 	@Column
-	private int TCO2;
+	private float TCO2;
 	@Column
-	private int SO2;
+	private float SO2;
 	@Column
-	private int K;
+	private float K;
 	
 	public String getId() {
 		return PHid;
@@ -44,45 +44,45 @@ public class Ph_Table {
 		this.PhTestTime = time;
 	}
 	
-	public int getPCO2() {
+	public float getPCO2() {
 		return PCO2;
 	}
-	public void setPCO2(int pCO2) {
+	public void setPCO2(float pCO2) {
 		this.PCO2 = pCO2;
 	}
 	
-	public int getPO2() {
+	public float getPO2() {
 		return PCO2;
 	}
-	public void setPO2(int pO2) {
+	public void setPO2(float pO2) {
 		this.PCO2 = pO2;
 	}
 	
-	public int getBE() {
+	public float getBE() {
 		return BE;
 	}
-	public void setBE(int be) {
+	public void setBE(float be) {
 		this.BE = be;
 	}
 	
-	public int getHCO3() {
+	public float getHCO3() {
 		return HCO3;
 	}
-	public void setHCO3(int hCO3) {
+	public void setHCO3(float hCO3) {
 		this.HCO3 = hCO3;
 	}
 	
-	public int getSO2() {
+	public float getSO2() {
 		return SO2;
 	}
-	public void setSO2(int SO2) {
+	public void setSO2(float SO2) {
 		this.SO2 = SO2;
 	}
 	
-	public int getK() {
+	public float getK() {
 		return K;
 	}
-	public void setK(int k) {
+	public void setK(float k) {
 		this.K = k;
 	}
 	@Override
