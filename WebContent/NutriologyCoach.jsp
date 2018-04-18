@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					 <div>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="./showAllAtheletes">运动员管理</a></li>
+							<li class="active"><a href="./showAllCyclists?test=test">运动员管理</a></li>
 							<li ><a href="./ShowAnnounce">xxx</a></li>	
 						</ul>
 					</div>
@@ -56,7 +56,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-left">运动员信息</div>
                             </div>
-							
                             <div class="block-content collapse in">
                                 <div class="span12">		
 									<div class="btn-group">
@@ -82,10 +81,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						                  <th>ID</th>						                  
 						                  <th>姓名</th>
 										  <th>性别</th>
-										  <th>身高</th>
-										  <th>体重</th>	
-										  <th>血常规表</th>	
-										  <th>血液PH表</th>		  	
+										  <th>身高(cm)</th>
+										  <th>体重(kg)</th>	
+										  <th>WBC(10^9/L)</th>	
+										  <th>RBC(10^12/L)</th>
+										  <th>HGB(g/L)</th>
+										  <th>HCT(%)</th>
+										  <th>MCV(FL)</th>
+										  <th>HGB/RBC(pg)</th>
+										  <th>MCHC(g/L)</th>
+										  <th>PLT(10^9/L)</th>
 						                </tr>
 						              </thead>
 						              <tbody>						             
@@ -98,6 +103,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										  <td>the Bird</td>	
 										  <td>the Bird</td>	
 										  <td>the Bird</td>	
+										  <td>the Bird</td>
+										  <td>the Bird</td>
+										  <td>the Bird</td>
+										  <td>the Bird</td>
+										  <td>the Bird</td>
 										  <td>
 											<div class="btn-group">
 												<button type="button" class="btn btn-primary">操作</button>

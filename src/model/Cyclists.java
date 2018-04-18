@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Cyclists {
 	
 	@Id
-	private String CiD;//主键
+	private String Cid;//主键
 	@Column
 	private String CName;
 	@Column
@@ -20,13 +20,19 @@ public class Cyclists {
 	@Column
 	private int CWeight;
 	
-	public String getId() {
-		return CiD;
+	
+	public String getCid() {
+		return Cid;
 	}
-	public void setId(String id) {
-		this.CiD = id;
+	public void setCid(String cid) {
+		Cid = cid;
 	}
-
+	public String getCName() {
+		return CName;
+	}
+	public void setCName(String cName) {
+		CName = cName;
+	}
 	public String getName() {
 		return CName;
 	}
@@ -56,9 +62,10 @@ public class Cyclists {
 	}
 	@Override
 	public String toString() {
-		return "athlete [Cid=" + CiD + ", CName=" + CName + ", Sex=" + Sex +",CHeight="+  CHeight +
-				",CWeight="+CWeight+ "]";
+		return "Cyclists [Cid=" + Cid + ", CName=" + CName + ", Sex=" + Sex + ", CHeight=" + CHeight + ", CWeight="
+				+ CWeight + "]";
 	}
+	
 	
 	
 }

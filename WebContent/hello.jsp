@@ -17,7 +17,6 @@
 <body id="login" style="background-color:rgb(217, 237, 247);">
 <br><br><br><br>
 	<div class="container">
-
 		<form class="form-signin"  action="./loginServlet" method="post"
 			id="loginForm" style=" background-color: rgba(245, 245, 245, 0.62);
     			border: 1px solid rgba(119, 125, 199, 0.97);">
