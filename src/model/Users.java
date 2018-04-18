@@ -16,17 +16,17 @@ public class Users {
 	@Column
 	private String Password;
 	
-	public String getId() {
+	public String getUserId() {
 		return UserID;
 	}
-	public void setId(String id) {
+	public void setUserId(String id) {
 		this.UserID = id;
 	}
 
-	public String getName() {
+	public String getUserName() {
 		return UserName;
 	}
-	public void setName(String name) {
+	public void setUserName(String name) {
 		this.UserName = name;
 	}
 	public String getPassword() {

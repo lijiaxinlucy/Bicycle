@@ -41,15 +41,15 @@ public class loginServlet extends HttpServlet {
 		String id=request.getParameter("id");
 		String password=request.getParameter("password");
 		Session session = DBConnection.getFactory().openSession();//用configuration对象获取session对象
-		String hql = "from User where UserID=:ids and Password=:password";//User为model里的模型
+		String hql = "from Users where UserID=:ids and Password=:password";//User为model里的模型
 		Query<Users> query = session.createQuery(hql);//用session对象查询
 		query.setString("ids", id);//
 		query.setString("password", password);
 		
 		List<Users> obj = query.list();
 		for(Users user:obj){
-			String name=user.getName();
-			String userid=user.getId();
+			String name=user.getUserName();
+			String userid=user.getUserId();
 			//System.out.println(userid);
 			String sql="from Role_User where UserID=:userids";//查找userid对应的roleid
 			Query<Role_User> query2=session.createQuery(sql);
@@ -65,7 +65,11 @@ public class loginServlet extends HttpServlet {
 				query3.setString("roleids", roleid);
 				List<Roles> obj3=query3.list();
 				for(Roles role:obj3){
-					System.out.println(role.getRoleName());
+					//System.out.println(name +"的角色是"+role.getRoleName());
+					if(role.getRoleName().equals("NutriologyCoach"))
+					{
+						System.out.println(name+"的角色是营养学科教练");
+					}
 				}
 			}
 			
