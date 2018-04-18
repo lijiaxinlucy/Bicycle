@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")//数据库里的users表
-public class User {
+public class Users {
 	
 	@Id
 	private String UserID;//主键

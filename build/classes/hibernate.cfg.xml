@@ -11,7 +11,7 @@
         <property name="connection.username">user1</property>  
         <property name="connection.password">pw_user1</property>  
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>  
-   		<mapping class="model.User"/>
+   		<mapping class="model.Users"/>
 		<mapping class="model.Blood_Routine"/>
 		<mapping class="model.C_br"/>
 		<mapping class="model.C_ph"/>

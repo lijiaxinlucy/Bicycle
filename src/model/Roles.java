@@ -14,17 +14,17 @@ public class Roles {
 	@Column
 	private String RoleName;
 	
-	public String getId() {
+	public String getRoleId() {
 		return RoleID;
 	}
-	public void setId(String id) {
+	public void setRoleId(String id) {
 		this.RoleID = id;
 	}
 
-	public String getName() {
+	public String getRoleName() {
 		return RoleName;
 	}
-	public void setName(String name) {
+	public void setRoleName(String name) {
 		this.RoleName = name;
 	}
 	@Override
