@@ -60,23 +60,30 @@ public class loginServlet extends HttpServlet {
 				//System.out.println(ru.getRoleId());
 				String roleid=ru.getRoleId();
 				System.out.println(name+"的角色id是"+roleid);
-				String sql2="from Roles where RoleID=:roleids";
+				String sql2="from Roles where RoleID=:roleids";//通过roleid找到角色名称
 				Query<Roles> query3=session.createQuery(sql2);
 				query3.setString("roleids", roleid);
 				List<Roles> obj3=query3.list();
-				for(Roles role:obj3){
-					//System.out.println(name +"的角色是"+role.getRoleName());
+				for(Roles role:obj3){//根据不同的角色进入不同的学科主页
 					if(role.getRoleName().equals("NutriologyCoach"))
 					{
-						System.out.println(name+"的角色是营养学科教练");
+						response.sendRedirect("./NutriologyCoach.jsp");
+					}
+					else if(role.getRoleName().equals("RehabilitationCoach")){
+						response.sendRedirect("./RehabilitationCoach.jsp");
+					}
+					else if(role.getRoleName().equals("DynamicsCoach")){
+						response.sendRedirect("./DynamicsCoach.jsp");
+					}
+					else if(role.getRoleName().equals("HeadCoach")){
+						response.sendRedirect("./HeadCoach.jsp");
+					}
+					else {
+						response.sendRedirect("./error.jsp");
 					}
 				}
 			}
-			
-		}
-		if(!obj.isEmpty())
-			response.sendRedirect("./perCoachhome.jsp");
-		else  response.sendRedirect("./error.jsp");
+		}  
 	}
 
 	/**
