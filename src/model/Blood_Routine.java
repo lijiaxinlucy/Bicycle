@@ -1,5 +1,8 @@
 package model;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.IllegalFormatCodePointException;
 
 import javax.persistence.Column;
@@ -13,8 +16,9 @@ public class Blood_Routine {
 	
 	@Id
 	private String BRid;//主键
+	
 	@Column
-	private String BloodTestTime;
+	java.sql.Timestamp BloodTestTime;
 	@Column
 	private float WBC;
 	@Column           
@@ -39,10 +43,10 @@ public class Blood_Routine {
 		this.BRid = id;
 	}
 
-	public String getBloodTestTime() {
+	public Timestamp getBloodTestTime() {
 		return BloodTestTime;
 	}
-	public void setBloodTestTime(String time) {
+	public void setBloodTestTime(Timestamp time) {
 		this.BloodTestTime = time;
 	}
 	

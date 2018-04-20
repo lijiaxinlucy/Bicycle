@@ -1,13 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+﻿
 <!DOCTYPE html>
 <html class="no-js">
     
     <head>
         <title>营养学科教练主页</title>
+             <meta charset=UTF-8>
         <!-- Bootstrap -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -28,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">Welcome！</a>
+                    <a class="brand" href="#">营养学科教练</a>
 					<div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">
@@ -37,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a tabindex="-1" href="./Logout">退出登录</a>
+                                        <a tabindex="-1" href="./hello.jsp">退出登录</a>
                                     </li>
                                 </ul>
                             </li>
@@ -46,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 <div>
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="./showAllCyclists?test=test">运动员管理</a></li>
-							<li ><a href="./ShowAnnounce">xxx</a></li>	
+							<li ><a href="./ShowAnnounce">运动员分析报告</a></li>	
 						</ul>
 					</div>
 				</div>
@@ -58,58 +55,74 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">		
-									<div class="btn-group">
-                                         <a href="./addAthelete.jsp"><button class="btn btn-success">Add New <i class="icon-plus icon-white"></i></button></a>
-                                     </div>
+									<!-- <div class="btn-group">
+                                         <a href="./addAthelete.jsp"><button class="btn btn-success">添加新的运动员 <i class="icon-plus icon-white"></i></button></a>
+                                 </div>   --> 
+                                 <h4  id="h4">最近一天的训练数据</h4>
 									<div class="btn-group pull-right">
+
 										<form class="navbar-form navbar-right" action="./showPlace" method="post" role="search">
 											<div class="input-group">												
 												<select name="flagParam">
 												  <option value ="areaID">按运动员ID查找</option>
-												  <option value ="name">按运动员姓名查找</option>												 
+												  <option value ="name">按运动员姓名查找</option>	
+												  
 												</select>
 												<input type="text" name="realParam" class="form-control" placeholder="请输入关键字">
 												<span class="input-group-btn">
-													<button class="btn btn-default" type="submit">search</button>
+													<button class="btn btn-default" type="submit">查找</button>
 												</span>
 											</div><!-- /input-group -->
 										</form>
 									</div>
+									<div class="btn-group pull-right">                  <!--  时间输入输出框 -->
+									<form class="navbar-form navbar-right" action="./avg" method="post" role="search">
+									<div class="input-group">	
+									<input type="date" id="startdate"class="form-control">
+                                	<input type="date" id="enddate"class="form-control" >
+												<span class="input-group-btn">
+													<button class="btn btn-default" type="submit">平均成绩排名</button>
+												</span>
+												</div>
+										</form>
+											</div>		<!--  结束时间输入输出框 -->
   									<table class="table" style=" margin-bottom: 80px;">
 						              <thead>
 						                <tr>
 						                  <th>ID</th>						                  
-						                  <th>姓名</th>
+						                   <th>姓名</th>
 										  <th>性别</th>
-										  <th>身高(cm)</th>
-										  <th>体重(kg)</th>	
-										  <th>WBC(10^9/L)</th>	
-										  <th>RBC(10^12/L)</th>
-										  <th>HGB(g/L)</th>
-										  <th>HCT(%)</th>
-										  <th>MCV(FL)</th>
-										  <th>HGB/RBC(pg)</th>
-										  <th>MCHC(g/L)</th>
-										  <th>PLT(10^9/L)</th>
+										  <th>身高</th>
+										  <th>体重</th>
+										   <th>运动成绩</th>
+										  <th>白细胞数</th>	
+										  <th>红细胞数</th>
+										    <th>血红蛋白</th>	
+										  <th>红细胞压积</th>	
+										    <th>红细胞平均体积</th>	
+										  <th>红细胞平均含量</th>	
+										    <th>平均红细胞血红蛋白浓度</th>	
+										  <th>血小板计数</th>	
 						                </tr>
 						              </thead>
 						              <tbody>						             
 						                <tr class="info">
-						                  <td>3</td>
-						                  <td>Larry</td>
+						                  <td><a href="./Nutriologyathlete.jsp">3</a></td>
+						                  <td><a href="./Nutriologyathlete.jsp">Larry</a></td>
 						                  <td>the Bird</td>	
 										  <td>the Bird</td>	
 										  <td>the Bird</td>	
 										  <td>the Bird</td>	
 										  <td>the Bird</td>	
 										  <td>the Bird</td>	
-										  <td>the Bird</td>
-										  <td>the Bird</td>
-										  <td>the Bird</td>
-										  <td>the Bird</td>
-										  <td>the Bird</td>
+										  <td>the Bird</td>	
+										  <td>the Bird</td>	
+										  <td>the Bird</td>	
+										  <td>the Bird</td>	
+										  <td>the Bird</td>	
+										  <td>the Bird</td>	
 										  <td>
-											<div class="btn-group">
+											<!-- <div class="btn-group">
 												<button type="button" class="btn btn-primary">操作</button>
 												<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 													<span class="caret"></span>													
@@ -119,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<li class="divider"></li>
 													<li><a href="./DeletePlace?id=2">删除</a></li>												
 												</ul>
-											</div>	
+											</div> -->	
 										  </td>
 						                </tr>
 						              </tbody>

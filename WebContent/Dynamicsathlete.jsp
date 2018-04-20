@@ -1,10 +1,9 @@
 ﻿
-
 <!DOCTYPE html>
 <html class="no-js">
     
     <head>
-        <title>力学科教练主页</title>
+        <title>运动员力学学科</title>
              <meta charset=UTF-8>
         <!-- Bootstrap -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -35,7 +34,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a tabindex="-1" href="./hello.jsp">退出登录</a>
+                                        <a tabindex="-1" href="./Logout">退出登录</a>
                                     </li>
                                 </ul>
                             </li>
@@ -56,13 +55,10 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">		
-									<div class="btn-group">
-                                         <a href="./Dynamicsadd.jsp"><button class="btn btn-success">添加新的运动员 <i class="icon-plus icon-white"></i></button></a>
-                                 </div>   
-                                 
-									<div class="btn-group pull-right">
 
-										<form class="navbar-form navbar-right" action="./showPlace" method="post" role="search">
+									<!--
+               
+                                  	<form class="navbar-form navbar-right" action="./showPlace" method="post" role="search">
 											<div class="input-group">												
 												<select name="flagParam">
 												  <option value ="areaID">按运动员ID查找</option>
@@ -74,24 +70,24 @@
 													<button class="btn btn-default" type="submit">查找</button>
 												</span>
 											</div><!-- /input-group -->
-										</form>
-									</div>
 									<div class="btn-group pull-right">                  <!--  时间输入输出框 -->
-									<form class="navbar-form navbar-right" action="./a vg" method="post" role="search">
-									<div class="input-group">	
-									<input type="date" id="startdate"class="form-control">
-                                	<input type="date" id="enddate"class="form-control" >
-												<span class="input-group-btn">
-													<button class="btn btn-default" type="submit">平均成绩排名</button>
-												</span>
-												</div>
+									<form class="navbar-form navbar-right" action="./search" method="post">	
+                                	<h5>查看日期成绩:<input type="date" id="searchdate"class="form-control"></h5>
+									
 										</form>
-											</div>		<!--  结束时间输入输出框 -->
+										</div>		<!--  结束时间输入输出框 -->
+		
+									<div class="btn-group pull-left">                  
+										
+                                	<h5>以下为最近一个月训练数据</h5>
+									</div>	
+											
   									<table class="table" style=" margin-bottom: 80px;">
 						              <thead>
 						                <tr>
+						                <th>训练时间</th>
 						                  <th>ID</th>						                  
-						                   <th>姓名</th>
+						                  <th>姓名</th>
 										  <th>性别</th>
 										  <th>身高</th>
 										  <th>体重</th>
@@ -108,8 +104,9 @@
 						              </thead>
 						              <tbody>						             
 						                <tr class="info">
-						                  <td><a href="./Dynamicsathlete.jsp">3</a></td>
-						                  <td><a href="./Dynamicsathlete.jsp">Larry</a></td>
+						                	 <td>3</td>
+						                  <td>3</td>
+						                  <td>Larry</td>
 						                  <td>the Bird</td>	
 										  <td>the Bird</td>	
 										  <td>the Bird</td>	
@@ -123,11 +120,7 @@
 										  <td>the Bird</td>	
 										  <td>the Bird</td>	
 										  <td>
-											<!--
-                                            	作者：457392462@qq.com
-                                            	时间：2018-04-20
-                                            	描述：
-                                            <div class="btn-group">
+											<div class="btn-group">
 												<button type="button" class="btn btn-primary">操作</button>
 												<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 													<span class="caret"></span>													
@@ -137,7 +130,7 @@
 													<li class="divider"></li>
 													<li><a href="./DeletePlace?id=2">删除</a></li>												
 												</ul>
-											</div>	-->
+											</div>	
 										  </td>
 						                </tr>
 						              </tbody>

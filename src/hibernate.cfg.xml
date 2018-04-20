@@ -21,7 +21,7 @@
 		<mapping class="model.Role_Permission"/>
 		<mapping class="model.Role_User"/>
 		<mapping class="model.Roles"/>
-			
+		
     </session-factory>  
-
+	
 </hibernate-configuration>
