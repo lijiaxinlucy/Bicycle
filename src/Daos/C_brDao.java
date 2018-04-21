@@ -33,7 +33,17 @@ public class C_brDao {
 	    }
 		return list;
 	}
-	
+	public String getcid(String brid){//通过brid找到唯一的cid
+		String hql="from C_br"+" where BRid=:brid";
+		Session session=DBConnection.getFactory().openSession();
+		Query<C_br> query=session.createQuery(hql);
+		query.setString("brid", brid);
+	    //String  str=query.getQueryString();//这写的是一个啥？？！？？！？
+		List<C_br> str = query.list();
+		if(str !=null && !str.isEmpty())
+			return str.get(0).getCid();
+		else return null;
+	}
 	public String getbrid(String cid, Timestamp date) {//通过cid和date找唯一的brid
 		// TODO Auto-generated method stub
 		String hql="from C_br"+" where Cid=:cid";
@@ -55,78 +65,6 @@ public class C_brDao {
 	    }
 		return null;
 	    
-	}
-	public Timestamp getDate(String brid){//通过brid找到brid对应的时间
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getBloodTestTime();
-	}
-	public float getWbc(String brid){//通过brid找到对应的WBC
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getWBC();
-	}
-	public float getRbc(String brid){//通过brid找到对应的RBC
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getRBC();
-	}
-	public float getHgb(String brid){
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getHGB();
-	}
-	public float getHct(String brid){
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getHCT();
-	}
-	public float getMcv(String brid){
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getMCV();
-	}
-	public float getHgb_Rbc(String brid){
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getHGB_RBC();
-	}
-	public float getMchc(String brid){
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getMCHC();
-	}
-	public float getPlt(String brid){
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getPLT();
 	}
 	
 }

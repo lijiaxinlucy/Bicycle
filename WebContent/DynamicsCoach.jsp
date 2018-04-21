@@ -56,9 +56,7 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">		
-									<div class="btn-group">
-                                         <a href="./Dynamicsadd.jsp"><button class="btn btn-success">添加新的运动员 <i class="icon-plus icon-white"></i></button></a>
-                                 </div>   
+
                                  
 									<div class="btn-group pull-right">
 
@@ -76,8 +74,14 @@
 											</div><!-- /input-group -->
 										</form>
 									</div>
+									<div class="btn-group pull-left">                  
+                                         <a href="./Dynamicsadd.jsp"><button class="btn btn-success">批量添加运动员记录 <i class="icon-plus icon-white"></i></button></a>
+									</div>
+									<div class="btn-group pull-left">                  
+                                	<h5>以下为最近一天训练数据</h5>
+									</div>
 									<div class="btn-group pull-right">                  <!--  时间输入输出框 -->
-									<form class="navbar-form navbar-right" action="./a vg" method="post" role="search">
+									<form class="navbar-form navbar-right" action="./avg" method="post" role="search">
 									<div class="input-group">	
 									<input type="date" id="startdate"class="form-control">
                                 	<input type="date" id="enddate"class="form-control" >

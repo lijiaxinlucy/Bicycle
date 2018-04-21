@@ -14,7 +14,7 @@
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
     </head>
     
     <body>
@@ -78,9 +78,11 @@
 										</div>		<!--  结束时间输入输出框 -->
 		
 									<div class="btn-group pull-left">                  
-										
-                                	<h5>以下为最近一个月训练数据</h5>
+                                         <a href="./Dynamicsadd.jsp"><button class="btn btn-success">添加新的运动员记录 <i class="icon-plus icon-white"></i></button></a>
 									</div>	
+									<div class="btn-group pull-left">                  
+                                	<h5>以下为最近一个月训练数据</h5>
+									</div>
 											
   									<table class="table" style=" margin-bottom: 80px;">
 						              <thead>

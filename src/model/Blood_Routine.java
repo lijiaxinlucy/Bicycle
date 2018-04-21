@@ -44,6 +44,7 @@ public class Blood_Routine {
 	}
 
 	public Timestamp getBloodTestTime() {
+		
 		return BloodTestTime;
 	}
 	public void setBloodTestTime(Timestamp time) {

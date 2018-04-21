@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html class="no-js">
     
     <head>
-        <title>运动员力学学科</title>
+        <title>运动员营养学学科</title>
              <meta charset=UTF-8>
         <!-- Bootstrap -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">力学学科教练</a>
+                    <a class="brand" href="#">营养学学科教练</a>
 					<div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">

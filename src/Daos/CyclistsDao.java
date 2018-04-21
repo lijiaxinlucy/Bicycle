@@ -11,6 +11,7 @@ import org.hibernate.query.Query;
 import org.junit.experimental.theories.Theories;
 
 import dbutils.DBConnection;
+import model.Blood_Routine;
 import model.C_br;
 import model.Cyclists;
 
@@ -29,11 +30,7 @@ public class CyclistsDao {
 		List<Cyclists> obj=query.list();
 		return obj;
 	}
-	public static List<Cyclists> listAllCyclistsMsg(Date date){//通过一个日期列出该天内所有运动员信息
-		
-		return null;
-		
-	}
+	
 	public static Object deleteCyclistOneBr(String cid,Timestamp date){//通过cid和时间删除运动员的一条信息
 		C_brDao c_brDao=new C_brDao();
 		String brid=c_brDao.getbrid(cid,date);//通过cid和时间找到brid
@@ -69,13 +66,16 @@ public class CyclistsDao {
 		transaction.commit();
 		return null;
 	}
-	public static Object selectCyclistByCid(String Cid){//通过cid找到唯一的那个运动员
+	public static Cyclists selectCyclistByCid(String Cid){//通过cid找到唯一的那个运动员
 		String hql="from Cyclists where Cid=:cid";
 		Session session=DBConnection.getFactory().openSession();
 		Query<Cyclists> query=session.createQuery(hql);
 		query.setString("cid", Cid);
 		List<Cyclists> obj=query.list();
-		return obj;
+		//return (Cyclists) obj;
+		if(obj!=null && !obj.isEmpty())
+			return obj.get(0);
+		else return null;
 		
 	}
 	public static Object selectCyclistsByCName(String CName){//通过cname找到所有的运动员（可能重名）

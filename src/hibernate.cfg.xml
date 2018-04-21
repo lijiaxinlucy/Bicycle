@@ -5,7 +5,7 @@
 <hibernate-configuration>  
     <session-factory>  
         <property name="hbm2ddl.auto">update</property>  
-        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>  
         <property name="connection.url">jdbc:mysql://localhost:3306/athlete?useSSL=false</property>  
         <property name="connection.username">user1</property>  

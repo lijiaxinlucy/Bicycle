@@ -80,11 +80,12 @@
 									
 										</form>
 										</div>		<!--  结束时间输入输出框 -->
-		
 									<div class="btn-group pull-left">                  
-										
-                                	<h5>以下为最近一个月训练数据</h5>
+                                         <a href="./Rehabilitationadd.jsp"><button class="btn btn-success">添加新的运动员记录 <i class="icon-plus icon-white"></i></button></a>
 									</div>	
+									<div class="btn-group pull-left">                  
+                                	<h5>以下为最近一个月训练数据</h5>
+									</div>
 											
   									<table class="table" style=" margin-bottom: 80px;">
 						              <thead>

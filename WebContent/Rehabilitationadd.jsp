@@ -1,9 +1,13 @@
-﻿
+﻿<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html class="no-js">
     
     <head>
-        <title>营养学科教练主页</title>
+        <title>运动员康复学学学科</title>
              <meta charset=UTF-8>
         <!-- Bootstrap -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -25,7 +29,7 @@
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">营养学科教练</a>
+                    <a class="brand" href="#">康复学学学科教练</a>
 					<div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">
@@ -47,85 +51,59 @@
 						</ul>
 					</div>
 				</div>
+				
 				    <div class="row-fluid">
                         <!-- block -->
 						<div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">运动员信息</div>
+                                <div class="muted pull-left">添加运动员信息</div>
+                                
                             </div>
+							
                             <div class="block-content collapse in">
-                                <div class="span12">		
-									<div class="btn-group pull-right">
-									</div>
-								
-			<div class="container">
-								<br /><br />
-							<form class="form-horizontal" role="form">
-								<div class="form-group">
-									<label for="firstname" class="col-sm-2 control-label">XX</label>
-									<div class="col-sm-4">
-										<input type="text" class="form-control" >
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="firstname" class="col-sm-2 control-label">XX</label>
-									<div class="col-sm-4">
-										<input type="text" class="form-control" >
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="firstname" class="col-sm-2 control-label">XX</label>
-									<div class="col-sm-4">
-										<input type="text" class="form-control" >
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="firstname" class="col-sm-2 control-label">XX</label>
-									<div class="col-sm-4">
-										<input type="text" class="form-control" >
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="firstname" class="col-sm-2 control-label">XX</label>
-									<div class="col-sm-4">
-										<input type="text" class="form-control" >
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="firstname" class="col-sm-2 control-label">XX</label>
-									<div class="col-sm-4">
-										<input type="text" class="form-control" >
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="firstname" class="col-sm-2 control-label">XX</label>
-									<div class="col-sm-4">
-										<input type="text" class="form-control" >
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="firstname" class="col-sm-2 control-label">XX</label>
-									<div class="col-sm-4">
-										<input type="text" class="form-control" >
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="firstname" class="col-sm-2 control-label">XX</label>
-									<div class="col-sm-4">
-										<input type="text" class="form-control" >
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="firstname" class="col-sm-2 control-label"></label>
-									<div class="col-sm-4">
-										<input class="btn btn-large btn-primary"  type="submit"  value="提交">
-										<button class="btn btn-large " style="margin-left: 120px;" type="reset">重置</button>
-									</div>
-								</div>
-
-							</form>
-							</div>
-
+                                <div class="span12">							
+  									<table class="table" style=" margin-bottom: 80px;">
+						              <thead>
+						                <tr>
+						                  <th>&nbsp;&nbsp;&nbsp;ID</th>						                  
+						                  <th>&nbsp;&nbsp;&nbsp;姓名</th>
+										  <th>&nbsp;&nbsp;&nbsp;用户信息</th>
+										  <th>&nbsp;&nbsp;&nbsp;xx</th>
+										  <th>&nbsp;&nbsp;&nbsp;xx</th>	
+										  <th>&nbsp;&nbsp;&nbsp;xx</th>	
+										  <th>&nbsp;&nbsp;&nbsp;xx</th>	
+										  <th>&nbsp;&nbsp;&nbsp;xx</th>	
+						                </tr>
+						              </thead>
+						              <tbody>						             
+						                <tr class="info">
+						                  <td><input type="text" class="" style="width: 140px;height: 30px;margin: 10px;"></td>
+						                  <td><input type="text" class="" style="width: 140px;height: 30px;margin: 10px;"></td>
+						                  <td><input type="text" class="" style="width: 140px;height: 30px;margin: 10px;"></td>
+						                  <td><input type="text" class="" style="width: 140px;height: 30px;margin: 10px;"></td>
+						                  <td><input type="text" class="" style="width: 140px;height: 30px;margin: 10px;"></td>
+						                  <td><input type="text" class="" style="width: 140px;height: 30px;margin: 10px;"></td>
+						                  <td><input type="text" class="" style="width: 140px;height: 30px;margin: 10px;"></td>
+						                  <td><input type="text" class="" style="width: 140px;height: 30px;margin: 10px;"></td>
+	
+										  <td>
+											<div class="btn-group">
+												<button type="button" class="btn btn-primary" style="margin: 7px;">保存</button>												
+												</button>
+											</div>	
+										  </td>
+						                </tr>
+						              </tbody>
+						            </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+			</div>
+			
+		<div>
+        <!--/.fluid-container-->
         <script src="vendors/jquery-1.9.1.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="vendors/easypiechart/jquery.easy-pie-chart.js"></script>

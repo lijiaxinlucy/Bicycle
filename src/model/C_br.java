@@ -28,10 +28,7 @@ public class C_br {
 		this.BRid = brid;
 	}
 	
-	@Override
-	public String toString() {
-		return "athlete [Cid=" + Cid + ", BRid=" + BRid + "]";
-	}
+	
 	
 	
 }

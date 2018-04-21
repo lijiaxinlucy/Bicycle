@@ -25,7 +25,7 @@
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">Welcome！</a>
+                    <a class="brand" href="#">总教练主页</a>
 					<div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">
@@ -34,14 +34,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a tabindex="-1" href="./ShowMyInfo">查看个人信息</a>
-                                    </li>
-									<li>
-                                        <a tabindex="-1" href="./ModifyMyInfo">修改个人信息</a>
-                                    </li>									
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a tabindex="-1" href="./Logout">退出登录</a>
+                                        <a tabindex="-1" href="./hello.jsp">退出登录</a>
                                     </li>
                                 </ul>
                             </li>
@@ -49,8 +42,8 @@
 					</div>
 					 <div>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="./ShowUser">用户管理</a></li>
-							<li ><a href="./ShowAnnounce">体检信息管理</a></li>
+							<li class="active"><a href="./ShowUser">运动员管理</a></li>
+							<li ><a href="./ShowAnnounce">运动员整体分析报告</a></li>
 							
 						</ul>
 					</div>
@@ -60,40 +53,52 @@
                         <!-- block -->
 						<div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">用户信息</div>
+                                <div class="muted pull-left">运动员信息</div>
                             </div>
 							
                             <div class="block-content collapse in">
                                 <div class="span12">		
 									<div class="btn-group">
-                                         <a href="./addPlace.jsp"><button class="btn btn-success">Add New <i class="icon-plus icon-white"></i></button></a>
+                                         <a href="./athleteadd.jsp"><button class="btn btn-success">添加新的运动员 <i class="icon-plus icon-white"></i></button></a>
                                      </div>
 									<div class="btn-group pull-right">
 										<form class="navbar-form navbar-right" action="./showPlace" method="post" role="search">
 											<div class="input-group">												
 												<select name="flagParam">
-												  <option value ="areaID">按用户ID查找</option>
-												  <option value ="name">按用户姓名查找</option>												 
+												  <option value ="areaID">按运动员ID查找</option>
+												  <option value ="name">按运动员姓名查找</option>												 
 												</select>
 												<input type="text" name="realParam" class="form-control" placeholder="请输入关键字">
 												<span class="input-group-btn">
-													<button class="btn btn-default" type="submit">search</button>
+													<button class="btn btn-default" type="submit">查找</button>
 												</span>
 											</div><!-- /input-group -->
 										</form>
 									</div>
-								
+									<div class="btn-group pull-right">                  <!--  时间输入输出框 -->
+									<form class="navbar-form navbar-right" action="./a vg" method="post" role="search">
+									<div class="input-group">	
+									<input type="date" id="startdate"class="form-control">
+                                	<input type="date" id="enddate"class="form-control" >
+												<span class="input-group-btn">
+													<button class="btn btn-default" type="submit">平均成绩排名</button>
+												</span>
+												</div>
+										</form>
+											</div>	
+											
   									<table class="table" style=" margin-bottom: 80px;">
 						              <thead>
 						                <tr>
 						                  <th>ID</th>						                  
 						                  <th>姓名</th>
-										  <th>用户信息</th>
-										  <th>xx</th>
-										  <th>xx</th>	
-										  <th>xx</th>	
-										  <th>xx</th>	
-										  <th>xx</th>	
+										  <th>性别</th>
+										  <th>身高</th>
+										  <th>体重</th>	
+										  <th>运动成绩</th>	
+										  <th>营养学科训练数据</th>	
+										  <th>康复学科训练数据</th>	
+										   <th>力学学科训练数据</th>
 						                </tr>
 						              </thead>
 						              <tbody>						             
@@ -104,8 +109,9 @@
 										  <td>the Bird</td>	
 										  <td>the Bird</td>	
 										  <td>the Bird</td>	
-										  <td>the Bird</td>	
-										  <td>the Bird</td>	
+										  <td><a href="./Nutriologyathlete.jsp">点击查看</a></td>	
+										  <td><a href="./Rehabilitationathlete.jsp">点击查看</a></td>	
+										  <td><a href="./Dynamicsathlete.jsp">点击查看</a></td>
 										  <td>
 											<div class="btn-group">
 												<button type="button" class="btn btn-primary">操作</button>
