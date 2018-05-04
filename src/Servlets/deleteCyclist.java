@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Daos.Blood_RoutineDao;
 import Daos.CyclistsDao;
+import model.Blood_Routine;
 
 /**
  * Servlet implementation class deleteCyclist
@@ -33,12 +35,13 @@ public class deleteCyclist extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String cid=request.getParameter("Cid");
-		String time=request.getParameter("time");
-		Timestamp date=Timestamp.valueOf(time);
-		CyclistsDao cyclistsDao=new CyclistsDao();
-		cyclistsDao.deleteCyclistAllBr(cid,date);
-		System.out.println("删除cyclist成功");
+		String brid=request.getParameter("brid");
+		String id=request.getParameter("id");
+		System.out.println("被删除的brid是"+brid);
+		Blood_RoutineDao blood_RoutineDao=new Blood_RoutineDao();
+		blood_RoutineDao.deleteOneBrMsg(brid);
+		System.out.println("删除成功");
+		
 		
 	}
 

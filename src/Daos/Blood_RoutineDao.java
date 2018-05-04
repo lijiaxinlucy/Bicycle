@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.xml.soap.SAAJMetaFactory;
+
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -40,37 +42,53 @@ public class Blood_RoutineDao {
 		}
 		return list;
 	}
-//	public List<Blood_Routine> getBloodRoutine(String date){//通过年月日得到所有的血常规信息
-//		Blood_RoutineDao blood_Routine=new Blood_RoutineDao();
-//		List<Timestamp> list=blood_Routine.geTimestamps();//获得所有的时间戳
-//		for(Timestamp t:list){
-//			System.out.println("getBloodRoutine:"+t);
-//		}
-//		for(Timestamp t:list){//这里的逻辑不对
-//			System.out.println(t);
-//			if(blood_Routine.getYMD(t).equals(date)){
-//				String hql="from Blood_Routine where BloodTestTime=:t";
-//				Session session=DBConnection.getFactory().openSession();
-//				Query<Blood_Routine> query=session.createQuery(hql);
-//				query.setTimestamp("t", t);
-//				List<Blood_Routine> blood_Routines=query.list();
-//				return blood_Routines;//这，，，找到一个后就返回了
-//			}
-//		}
-//		return null;
-//	}
+	public void deleteOneBrMsg(String brid){
+		String sql1="delete from Blood_Routine  "
+				+ "where BRid=:brid1";
+		String sql2="delete from C_br  "
+				+ "where BRid=:brid2";
+		Session session=DBConnection.getFactory().openSession();
+		Query query1=session.createQuery(sql1);
+		Query query2=session.createQuery(sql2);
+		query1.setSerializable("brid1", brid);
+		query2.setString("brid2", brid);
+		org.hibernate.Transaction transaction=session.beginTransaction();
+		query1.executeUpdate();
+		query2.executeUpdate();
+		transaction.commit();
+	}
 	public  List<Object[]> getBloodRoutine(String date)//通过年月日得到所有的血常规信息
 	{
-		String[] dates = date.split("-");
 		////////////////////////如果功能用的不频繁 ，可以写这个一个长长的sql语句，，，，不用到处写子函数了
-		String hql="select cy.Cid,cy.CName,cy.Sex, b.BRid,cy.CHeight,cy.CWeight,b.BloodTestTime,b.WBC,b.RBC,b.HGB,b.HCT,"
-				+ "b.MCV,b.HGB_RBC,b.MCHC,b.PLT "
+		String hql="select cy.Cid,cy.CName,cy.Sex, cy.CHeight,cy.CWeight,b.BloodTestTime,"
+				+ "b.WBC,b.RBC,b.HGB,b.HCT,"
+				+ "b.MCV,b.HGB_RBC,b.MCHC,b.PLT,c.BRid "
 				+ "from Blood_Routine as b,C_br as c,Cyclists as cy"
 				+ " where date_format(b.BloodTestTime,'%Y-%m-%d')=:date "
 				+ "and b.BRid=c.BRid and cy.Cid=c.Cid";
 		Session session=DBConnection.getFactory().openSession();
 		Query<Object[]> query=session.createQuery(hql);
 		query.setString("date", date);
+		List<Object[]> result = query.list();
+		//这里一般还得做一个判断，，万一没有查找到数据，，上层调用的就可能会出错
+		if(result!= null&& !result.isEmpty())
+			return result;
+		else {
+			return null;
+		}
+	}
+	public  List<Object[]> getBloodRoutineBybrid(String brid)//通过brid得到所有的血常规信息
+	{
+		////////////////////////如果功能用的不频繁 ，可以写这个一个长长的sql语句，，，，不用到处写子函数了
+		String hql="select cy.Cid,cy.CName,cy.Sex, cy.CHeight,cy.CWeight,b.BloodTestTime,"
+				+ "b.WBC,b.RBC,b.HGB,b.HCT,"
+				+ "b.MCV,b.HGB_RBC,b.MCHC,b.PLT "
+				+ "from Blood_Routine as b,C_br as c,Cyclists as cy "
+				+ "where c.BRid=:brid "
+				+ "and b.BRid=c.BRid and cy.Cid=c.Cid";
+		Session session=DBConnection.getFactory().openSession();
+		Query<Object[]> query=session.createQuery(hql);
+		query.setString("brid", brid);
 		List<Object[]> result = query.list();
 		//这里一般还得做一个判断，，万一没有查找到数据，，上层调用的就可能会出错
 		if(result!= null&& !result.isEmpty())
@@ -153,12 +171,7 @@ public class Blood_RoutineDao {
 	}
 	
 	//方法
-	public static void sortFromHighToLow(){//从大到小排序
-		
-	}
-	public static void sortFromLowToHigh(){//从小到大排序
-		
-	}
+	
 
 	public static void findMax(){//找到最大值
 	
@@ -166,7 +179,5 @@ public class Blood_RoutineDao {
 	public static void findMin(){//找到最小值
 		
 	}
-	public static void findAverage(){//找到平均值
-		
-	}
+	
 }

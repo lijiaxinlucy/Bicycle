@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.swing.text.FlowView.FlowStrategy;
 
 @Entity
 @Table(name = "cyclists")//数据库里的cyclists表
@@ -16,9 +17,9 @@ public class Cyclists {
 	@Column
 	private String Sex;
 	@Column
-	private int CHeight;
+	private float CHeight;
 	@Column
-	private int CWeight;
+	private float CWeight;
 	
 	
 	public String getCid() {
@@ -47,14 +48,14 @@ public class Cyclists {
 		this.Sex= sex;
 	}
 	
-	public int  getCHeight() {
+	public float  getCHeight() {
 		return CHeight;
 	}
 	public void setCHeight(int cHeight) {
 		this.CHeight = cHeight;
 	}
 	
-	public int  getCWeight() {
+	public float  getCWeight() {
 		return CWeight;
 	}
 	public void setCWeight(int cWeight) {

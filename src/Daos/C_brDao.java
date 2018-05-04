@@ -22,15 +22,13 @@ public class C_brDao {
 	public C_brDao(C_br c_br){
 		this.c_br=c_br;
 	}
-	public List<C_br> getbrid(String Cid){//由cid找到运动员对应的所有时间的血常规id
-		String hql="from C_br"+" where Cid=:cid";
+	public List<String> getbrid(String Cid){//由cid找到运动员对应的所有时间的血常规id
+		String hql="select BRid from C_br"+" where Cid=:cid";
 		Session session=DBConnection.getFactory().openSession();
-		Query<C_br> query=session.createQuery(hql);
+		Query<String> query=session.createQuery(hql);
 		query.setString("cid", Cid);
-	    List<C_br> list=query.list();
-	    for(C_br c:list){
-	    	System.out.println(c.getBRid());
-	    }
+	    List<String> list=query.list();
+	    System.out.println(list);
 		return list;
 	}
 	public String getcid(String brid){//通过brid找到唯一的cid
@@ -38,7 +36,6 @@ public class C_brDao {
 		Session session=DBConnection.getFactory().openSession();
 		Query<C_br> query=session.createQuery(hql);
 		query.setString("brid", brid);
-	    //String  str=query.getQueryString();//这写的是一个啥？？！？？！？
 		List<C_br> str = query.list();
 		if(str !=null && !str.isEmpty())
 			return str.get(0).getCid();

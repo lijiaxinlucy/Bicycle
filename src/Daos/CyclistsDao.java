@@ -31,41 +31,26 @@ public class CyclistsDao {
 		return obj;
 	}
 	
-	public static Object deleteCyclistOneBr(String cid,Timestamp date){//通过cid和时间删除运动员的一条信息
-		C_brDao c_brDao=new C_brDao();
-		String brid=c_brDao.getbrid(cid,date);//通过cid和时间找到brid
-		String sql2="delete from Cyclists where Cid=:cid";
-		String sql3="delete from Blood_Routine where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query1=session.createQuery(sql2);
-		Query query2=session.createQuery(sql3);
-		query1.setString("cid", cid);
-		query2.setString("brid", brid);
-		org.hibernate.Transaction transaction=session.beginTransaction();
-		query1.executeUpdate();
-		query2.executeUpdate();
-		transaction.commit();
-		return null;
-	}
-	public static Object deleteCyclistAllBr(String cid,Timestamp timestamp){//通过cid和时间删除运动员的所有信息
-		C_brDao c_brDao=new C_brDao();
-		List<C_br> brid=c_brDao.getbrid(cid);//通过cid和时间找到所有brid
-		String sql2="delete from Cyclists where Cid=:cid";
-		String sql3="delete from Blood_Routine where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query1=session.createQuery(sql2);
-		Query query2=session.createQuery(sql3);
-		query1.setString("cid", cid);
-		for(C_br cBr:brid){
-			query2.setString("brid", cBr.getBRid());
-			org.hibernate.Transaction transaction=session.beginTransaction();
-			query2.executeUpdate();
-		}
-		org.hibernate.Transaction transaction=session.beginTransaction();
-		query1.executeUpdate();
-		transaction.commit();
-		return null;
-	}
+	
+//	public static Object deleteCyclistAllBr(String cid,Timestamp timestamp){//通过cid和时间删除运动员的所有信息
+//		C_brDao c_brDao=new C_brDao();
+//		List<C_br> brid=c_brDao.getbrid(cid);//通过cid和时间找到所有brid
+//		String sql2="delete from Cyclists where Cid=:cid";
+//		String sql3="delete from Blood_Routine where BRid=:brid";
+//		Session session=DBConnection.getFactory().openSession();
+//		Query query1=session.createQuery(sql2);
+//		Query query2=session.createQuery(sql3);
+//		query1.setString("cid", cid);
+//		for(C_br cBr:brid){
+//			query2.setString("brid", cBr.getBRid());
+//			org.hibernate.Transaction transaction=session.beginTransaction();
+//			query2.executeUpdate();
+//		}
+//		org.hibernate.Transaction transaction=session.beginTransaction();
+//		query1.executeUpdate();
+//		transaction.commit();
+//		return null;
+//	}
 	public static Cyclists selectCyclistByCid(String Cid){//通过cid找到唯一的那个运动员
 		String hql="from Cyclists where Cid=:cid";
 		Session session=DBConnection.getFactory().openSession();

@@ -1,6 +1,12 @@
 ﻿<!DOCTYPE html>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <html class="no-js">
-
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="model.*" %>
+<%@ page import="Daos.*" %>
+<%@ page import="java.util.*" %>
 	<head>
 		<title>营养学科教练主页</title>
 		<meta charset=UTF-8>
@@ -42,10 +48,10 @@
 					<div>
 						<ul class="nav navbar-nav">
 							<li class="active">
-								<a href="./showAllCyclists?test=test&date=2018-04-18" id="gardCyclist">运动员管理</a>
+								<a href="./showAllCyclists" id="gardCyclist">运动员管理</a>
 							</li>
 							<li>
-								<a href="./ShowAnnounce">运动员分析报告</a>
+								<a href="./showReports">运动员分析报告</a>
 							</li>
 						</ul>
 					</div>
@@ -59,7 +65,7 @@
 						<div class="block-content collapse in">
 							<div class="span12">
 								<div class="btn-group pull-right">
-									<form class="navbar-form navbar-right" action="./showPlace" method="post" role="search">
+									<form class="navbar-form navbar-right" action="./searchCyclist" method="post" role="search">
 										<div class="input-group">
 											<select name="flagParam">
 												<option value="areaID">按运动员ID查找</option>
@@ -114,25 +120,30 @@
 									</thead>
 									<tbody>
 										<tr class="info">
-											<td>
-												<a href="./Nutriologyathlete.jsp">3</a>
-											</td>
-											<td>
-												<a href="./Nutriologyathlete.jsp">Larry</a>
-											</td>
-											<td>the Bird</td>
-											<td>the Bird</td>
-											<td>the Bird</td>
-											<td>the Bird</td>
-											<td>the Bird</td>
-											<td>the Bird</td>
-											<td>the Bird</td>
-											<td>the Bird</td>
-											<td>the Bird</td>
-											<td>the Bird</td>
-											<td>the Bird</td>
-											<td>the Bird</td>
+					<% 
+					Date date=new Date();
+					DateFormat simDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+					String punString=simDateFormat.format(date);
+					Blood_RoutineDao blood_RoutineDao=new Blood_RoutineDao();
+					List<Object[]> result=blood_RoutineDao.getBloodRoutine(punString);
+					for(Object[] obj: result ){
+					%>
+											<td><a href="./Nutriologyathlete.jsp?id=<%=obj[0] %>"><%=obj[0] %></a></td>
+											<td ><a href="./Nutriologyathlete.jsp?id=<%=obj[0] %>"><%=obj[1] %></a></td>
+											<td><%=obj[2] %></td>
+											<td><%=obj[3] %></td>
+											<td><%=obj[4] %></td>
+											<td><%=obj[5] %></td>
+											<td><%=obj[6] %></td>
+											<td><%=obj[7] %></td>
+											<td><%=obj[8] %></td>
+											<td><%=obj[9] %></td>
+											<td><%=obj[10] %></td>
+											<td><%=obj[11] %></td>
+											<td><%=obj[12] %></td>
+											<td><%=obj[13] %></td>
 										</tr>
+										<%} %>
 									</tbody>
 								</table>
 							</div>
@@ -146,26 +157,4 @@
 		<script src="vendors/easypiechart/jquery.easy-pie-chart.js"></script>
 		<script src="assets/scripts.js"></script>
 	</body>
-<!-- <script type="text/javascript">
-$("#showCyclist").hide();
-$("#gardCyclist").click(function(){
-    $.post("./showCyclists",{}, function(data){
-    	data = JSON.parse(data);			
-    	$("#showCyclist").show();
-    	$("#home").hide();
-	    var table = $("#table tbody");
-	    for (var i = 0; i < data.length; i++) {
-		    var tr = $("<tr class='info'> </tr>");
-		    tr.append($("<td>"+data[i]['id']+"</td>"));
-		    tr.append($("<td>"+data[i]['email']+"</td>"));
-		    tr.append($("<td>"+data[i]['photo']+"</td>"));
-		    tr.append($("<td>"+data[i]['nickName']+"</td>"));
-		    tr.append($("<td> 普通管理员  </td>"));	
-		    var btn = $("<td><input  class='button btn-danger' type='button'  id='deleteAdmin' onclick = 'deleteAdmin("+data[i]['id']+")' value='删除'> </td>");
-		    tr.append($(btn));
-		    table.append(tr);
-	    }
-    });
-  });
-</script> -->
 </html>

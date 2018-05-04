@@ -1,5 +1,10 @@
 ﻿
 <!DOCTYPE html>
+<%@page import="Daos.Blood_RoutineDao"%>
+<%@page import="Daos.C_brDao"%>
+<%@page import="model.C_br"%>
+<%@page import="model.Cyclists"%>
+<%@page import="java.util.*" %>
 <html class="no-js">
     
     <head>
@@ -16,7 +21,7 @@
         <![endif]-->
         <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
-    
+   
     <body>
 		<div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
@@ -56,22 +61,6 @@
                             <div class="block-content collapse in">
                                 <div class="span12">		
 									<div class="btn-group pull-right">
-
-									<!--
-               
-                                  	<form class="navbar-form navbar-right" action="./showPlace" method="post" role="search">
-											<div class="input-group">												
-												<select name="flagParam">
-												  <option value ="areaID">按运动员ID查找</option>
-												  <option value ="name">按运动员姓名查找</option>	
-												  
-												</select>
-												<input type="text" name="realParam" class="form-control" placeholder="请输入关键字">
-												<span class="input-group-btn">
-													<button class="btn btn-default" type="submit">查找</button>
-												</span>
-											</div><!-- /input-group -->
-											
 										</form>
 									</div>
 									<div class="btn-group pull-right">                  <!--  时间输入输出框 -->
@@ -110,22 +99,36 @@
 						              </thead>
 						              <tbody>						             
 						                <tr class="info">
-						                	 <td>3</td>
-						                  <td>3</td>
-						                  <td>Larry</td>
-						                  <td>the Bird</td>	
-										  <td>the Bird</td>	
-										  <td>the Bird</td>	
-										  <td>the Bird</td>	
-										  <td>the Bird</td>	
-										  <td>the Bird</td>	
-										  <td>the Bird</td>	
-										  <td>the Bird</td>	
-										  <td>the Bird</td>	
-										  <td>the Bird</td>	
-										  <td>the Bird</td>	
-										  <td>the Bird</td>	
-										  <td>
+	                <%
+	                	String id=request.getParameter("id");
+   	                	System.out.println("该运动员id是"+id);
+   	                	Cyclists c=new Cyclists();
+   	                	C_brDao cBrDao=new C_brDao();
+   	                	List<String> obj=cBrDao.getbrid(id);
+   	                	for(String str:obj){
+   	                		System.out.println("brid是"+str);
+     	                Blood_RoutineDao blood_RoutineDao=new Blood_RoutineDao();
+     	                List<Object[]> o=blood_RoutineDao.getBloodRoutineBybrid(str);
+     	                for(Object[] list:o)
+     	                {
+	                %>
+			              <td><%=list[5] %></td>
+		                  <td><%=list[0] %></td>
+		                  <td><%=list[1] %></td>
+		                  <td><%=list[2] %></td>	
+						  <td><%=list[3] %></td>	
+						  <td><%=list[4] %></td>	
+						  <td><%=list[0] %></td>	
+						  <td><%=list[6] %></td>	
+						  <td><%=list[7] %></td>	
+						  <td><%=list[8] %></td>	
+						  <td><%=list[9] %></td>	
+						  <td><%=list[10] %></td>	
+						  <td><%=list[11] %></td>	
+						  <td><%=list[12] %></td>	
+						  <td><%=list[13] %></td>	
+						  <td>
+						 
 											<div class="btn-group">
 												<button type="button" class="btn btn-primary">操作</button>
 												<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -134,11 +137,14 @@
 												<ul class="dropdown-menu" role="menu">
 													<li><a href="./ShowPlace?id=1">修改</a></li>
 													<li class="divider"></li>
-													<li><a href="./DeletePlace?id=2">删除</a></li>												
+													<li><a href="./deleteCyclist?brid=<%=str %>">删除</a></li>												
 												</ul>
 											</div>	
 										  </td>
 						                </tr>
+						                 <%
+     	                	}  
+     	                } %>
 						              </tbody>
 						            </table>
                                 </div>
