@@ -119,7 +119,6 @@ public class Blood_RoutineDao {
 		session.close();
 		System.out.println("插入数据成功");
 		String sql="";
-	
 		
 	}
 
