@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <html class="no-js">
@@ -85,11 +85,11 @@
 									</form>
 								</div>
 								<div class="btn-group pull-left">
-								<input type="file" value="dd">
-								<!-- <button class="btn btn-success">批量添加 
-								<i class="icon-plus icon-white"></i></button> -->
+									<a href="./Nutriologyadd.jsp"><button class="btn btn-success">批量添加运动员记录 <i class="icon-plus icon-white"></i></button></a>
 								</div>
-								
+								<div class="btn-group pull-left">
+									<h5>最近一天训练数据</h5>
+								</div>
 								<div class="btn-group pull-left"> 
 									<!--  时间输入输出框 -->
 									<form class="navbar-form navbar-right" action="./showOneDay" method="post" role="search">
@@ -99,16 +99,15 @@
 										</div>
 									</form>
 								</div>
-								<table class="table" style="  margin-bottom: 80px;"  summary="user infomation table" id="tableSort">
-									<thead bgcolor="#afeeee">
+								<table class="table" style=" margin-bottom: 80px;"  summary="user infomation table" id="tableSort">
+									<thead>
 										<tr>
 											<th onclick="$.sortTable.sort('tableSort',0)" style="cursor: pointer;">ID</th>
 											<th onclick="$.sortTable.sort('tableSort',1)" style="cursor: pointer;">姓名</th>
 											<th onclick="$.sortTable.sort('tableSort',2)" style="cursor: pointer;">性别</th>
 											<th onclick="$.sortTable.sort('tableSort',3)" style="cursor: pointer;">身高</th>
 											<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">体重</th>
-											<th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">年龄</th>
-											<th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">时间</th>
+											<th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">运动成绩</th>
 											<th onclick="$.sortTable.sort('tableSort',6)" style="cursor: pointer;">白细胞数</th>
 											<th onclick="$.sortTable.sort('tableSort',7)" style="cursor: pointer;">红细胞数</th>
 											<th onclick="$.sortTable.sort('tableSort',8)" style="cursor: pointer;">血红蛋白</th>
@@ -125,10 +124,8 @@
 					Date date=new Date();
 					DateFormat simDateFormat=new SimpleDateFormat("yyyy-MM-dd");
 					String punString=simDateFormat.format(date);
-					System.out.println(punString);
 					Blood_RoutineDao blood_RoutineDao=new Blood_RoutineDao();
 					List<Object[]> result=blood_RoutineDao.getBloodRoutine(punString);
-					System.out.println(result.size());
 					if(result!=null){
 					for(Object[] obj: result ){
 					%>
@@ -146,13 +143,9 @@
 											<td><%=obj[11] %></td>
 											<td><%=obj[12] %></td>
 											<td><%=obj[13] %></td>
-											<td><%=obj[14] %></td>
 										</tr>
-										<%}
-					}
-					else
-						response.sendRedirect("./error.jsp");
-					%>
+										<%} 
+										}%>
 									</tbody>
 								</table>
 							</div>

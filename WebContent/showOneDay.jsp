@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <html class="no-js">
@@ -85,9 +85,7 @@
 									</form>
 								</div>
 								<div class="btn-group pull-left">
-								<input type="file" value="dd">
-								<!-- <button class="btn btn-success">批量添加 
-								<i class="icon-plus icon-white"></i></button> -->
+									<input type="file" value="dd">
 								</div>
 								
 								<div class="btn-group pull-left"> 
@@ -99,7 +97,7 @@
 										</div>
 									</form>
 								</div>
-								<table class="table" style="  margin-bottom: 80px;"  summary="user infomation table" id="tableSort">
+								<table class="table" style=" margin-bottom: 80px;"  summary="user infomation table" id="tableSort">
 									<thead bgcolor="#afeeee">
 										<tr>
 											<th onclick="$.sortTable.sort('tableSort',0)" style="cursor: pointer;">ID</th>
@@ -107,7 +105,7 @@
 											<th onclick="$.sortTable.sort('tableSort',2)" style="cursor: pointer;">性别</th>
 											<th onclick="$.sortTable.sort('tableSort',3)" style="cursor: pointer;">身高</th>
 											<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">体重</th>
-											<th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">年龄</th>
+											<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">年龄</th>
 											<th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">时间</th>
 											<th onclick="$.sortTable.sort('tableSort',6)" style="cursor: pointer;">白细胞数</th>
 											<th onclick="$.sortTable.sort('tableSort',7)" style="cursor: pointer;">红细胞数</th>
@@ -122,13 +120,9 @@
 									<tbody>
 										<tr >
 					<% 
-					Date date=new Date();
-					DateFormat simDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-					String punString=simDateFormat.format(date);
-					System.out.println(punString);
+					String punString=request.getParameter("date");
 					Blood_RoutineDao blood_RoutineDao=new Blood_RoutineDao();
 					List<Object[]> result=blood_RoutineDao.getBloodRoutine(punString);
-					System.out.println(result.size());
 					if(result!=null){
 					for(Object[] obj: result ){
 					%>

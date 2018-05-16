@@ -1,16 +1,15 @@
 package Daos;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.List;
-
-import javax.xml.soap.SAAJMetaFactory;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import dbutils.DBConnection;
 import model.Blood_Routine;
+import model.C_br;
 import model.Cyclists;
 
 public class Blood_RoutineDao {
@@ -21,28 +20,17 @@ public class Blood_RoutineDao {
 	public Blood_RoutineDao(Cyclists cyclists){
 		this.c=cyclists;
 	}
-	public String getYMD(Timestamp timestamp){//通过时间戳得到年月日
-		String hql="select date_format(BloodTestTime,'%Y-%m-%d') from Blood_Routine "
-				+ "where BloodTestTime=:timestamp";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql);
-		query.setTimestamp("timestamp", timestamp);
-		String time=(String) query.uniqueResult();
-		
-		return time;
-		
-	}
-	public List<Timestamp> geTimestamps(){//获得所有的时间戳
+	public List<Date> geDates(){//获得所有的时间戳
 		String hql="select BloodTestTime from Blood_Routine";
 		Session session=DBConnection.getFactory().openSession();
-		Query<Timestamp> query=session.createQuery(hql);
-		List<Timestamp> list=query.list();
-		for(Timestamp t:list){
+		Query<Date> query=session.createQuery(hql);
+		List<Date> list=query.list();
+		for(Date t:list){
 			System.out.println(t);
 		}
 		return list;
 	}
-	public void deleteOneBrMsg(String brid){
+	public void deleteOneBrMsg(int brid){
 		String sql1="delete from Blood_Routine  "
 				+ "where BRid=:brid1";
 		String sql2="delete from C_br  "
@@ -51,7 +39,7 @@ public class Blood_RoutineDao {
 		Query query1=session.createQuery(sql1);
 		Query query2=session.createQuery(sql2);
 		query1.setSerializable("brid1", brid);
-		query2.setString("brid2", brid);
+		query2.setLong("brid2", brid);
 		org.hibernate.Transaction transaction=session.beginTransaction();
 		query1.executeUpdate();
 		query2.executeUpdate();
@@ -60,7 +48,7 @@ public class Blood_RoutineDao {
 	public  List<Object[]> getBloodRoutine(String date)//通过年月日得到所有的血常规信息
 	{
 		////////////////////////如果功能用的不频繁 ，可以写这个一个长长的sql语句，，，，不用到处写子函数了
-		String hql="select cy.Cid,cy.CName,cy.Sex, cy.CHeight,cy.CWeight,b.BloodTestTime,"
+		String hql="select cy.Cid,cy.CName,cy.Sex, cy.CHeight,cy.CWeight,cy.Age,b.BloodTestTime,"
 				+ "b.WBC,b.RBC,b.HGB,b.HCT,"
 				+ "b.MCV,b.HGB_RBC,b.MCHC,b.PLT,c.BRid "
 				+ "from Blood_Routine as b,C_br as c,Cyclists as cy"
@@ -77,18 +65,18 @@ public class Blood_RoutineDao {
 			return null;
 		}
 	}
-	public  List<Object[]> getBloodRoutineBybrid(String brid)//通过brid得到所有的血常规信息
+	public  List<Object[]> getBloodRoutineBybrid(int brid)//通过brid得到所有的血常规信息
 	{
 		////////////////////////如果功能用的不频繁 ，可以写这个一个长长的sql语句，，，，不用到处写子函数了
-		String hql="select cy.Cid,cy.CName,cy.Sex, cy.CHeight,cy.CWeight,b.BloodTestTime,"
-				+ "b.WBC,b.RBC,b.HGB,b.HCT,"
+		String hql="select b.BloodTestTime,cy.Cid,cy.CName,cy.Sex,cy.CHeight,cy.CWeight,"
+				+ "b.Speed,b.WBC,b.RBC,b.HGB,b.HCT, "
 				+ "b.MCV,b.HGB_RBC,b.MCHC,b.PLT "
 				+ "from Blood_Routine as b,C_br as c,Cyclists as cy "
 				+ "where c.BRid=:brid "
 				+ "and b.BRid=c.BRid and cy.Cid=c.Cid";
 		Session session=DBConnection.getFactory().openSession();
 		Query<Object[]> query=session.createQuery(hql);
-		query.setString("brid", brid);
+		query.setLong("brid", brid);
 		List<Object[]> result = query.list();
 		//这里一般还得做一个判断，，万一没有查找到数据，，上层调用的就可能会出错
 		if(result!= null&& !result.isEmpty())
@@ -97,87 +85,43 @@ public class Blood_RoutineDao {
 			return null;
 		}
 	}
-	public Timestamp getDate(String brid){//通过brid找到brid对应的时间
+	public Date getDate(int brid){//通过brid找到brid对应的时间
 		String hql2="from Blood_Routine "+"where BRid=:brid";
 		Session session=DBConnection.getFactory().openSession();
 		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
+		query.setLong("brid", brid);
 		Blood_Routine br=(Blood_Routine) query.uniqueResult();
 		return br.getBloodTestTime();
 	}
-	public float getWbc(String brid){//通过brid找到对应的WBC
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getWBC();
-	}
-	public float getRbc(String brid){//通过brid找到对应的RBC
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getRBC();
-	}
-	public float getHgb(String brid){
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getHGB();
-	}
-	public float getHct(String brid){
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getHCT();
-	}
-	public float getMcv(String brid){
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getMCV();
-	}
-	public float getHgb_Rbc(String brid){
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getHGB_RBC();
-	}
-	public float getMchc(String brid){
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getMCHC();
-	}
-	public float getPlt(String brid){
-		String hql2="from Blood_Routine "+"where BRid=:brid";
-		Session session=DBConnection.getFactory().openSession();
-		Query query=session.createQuery(hql2);
-		query.setString("brid", brid);
-		Blood_Routine br=(Blood_Routine) query.uniqueResult();
-		return br.getPLT();
-	}
-	
 	//方法
-	
-
-	public static void findMax(){//找到最大值
-	
-	}
-	public static void findMin(){//找到最小值
+	public void addOneMsg(String cid,String date,float speed,float wbc,float rbc,float hgb,
+			float hct,float mcv,float hgb_rbc,float mchc,float plt) throws ParseException{
+		//添加一条记录
+		Session session=DBConnection.getFactory().openSession();
+		org.hibernate.Transaction transaction=session.beginTransaction();
+		Blood_Routine blood_Routine=new Blood_Routine();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟  
+		java.util.Date tDate=sdf.parse(date);  		
+		java.sql.Date time=new java.sql.Date(tDate.getTime()); 
+		blood_Routine.setBloodTestTime(time);
+		blood_Routine.setHCT(hct);
+		blood_Routine.setHGB(hgb);
+		blood_Routine.setHGB_RBC(hgb_rbc);
+		blood_Routine.setMCHC(mchc);
+		blood_Routine.setMCV(mcv);
+		blood_Routine.setPLT(plt);
+		blood_Routine.setRBC(rbc);
+		blood_Routine.setSpeed(speed);
+		blood_Routine.setWBC(wbc);
+		session.save(blood_Routine);//
+		System.out.println("brid="+blood_Routine.getId());//获取自增主键的id
+		transaction.commit();
+		session.close();
+		System.out.println("插入数据成功");
+		String sql="";
 		
 	}
+
+	
 	
 }

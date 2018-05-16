@@ -20,7 +20,8 @@ public class Cyclists {
 	private float CHeight;
 	@Column
 	private float CWeight;
-	
+	@Column
+	private float Age;
 	
 	public String getCid() {
 		return Cid;
@@ -61,10 +62,16 @@ public class Cyclists {
 	public void setCWeight(int cWeight) {
 		this.CWeight = cWeight;
 	}
+	public float  getCAge() {
+		return Age;
+	}
+	public void setAge(int age) {
+		this.CWeight = age;
+	}
 	@Override
 	public String toString() {
 		return "Cyclists [Cid=" + Cid + ", CName=" + CName + ", Sex=" + Sex + ", CHeight=" + CHeight + ", CWeight="
-				+ CWeight + "]";
+				+ CWeight + ", Age=" + Age +"]";
 	}
 	
 	

@@ -12,7 +12,7 @@ public class C_br {
 	@Id
 	private String Cid;//主键
 	@Column
-	private String BRid;
+	private int BRid;
 	
 	public String getCid() {
 		return Cid;
@@ -21,10 +21,10 @@ public class C_br {
 		this.Cid = cid;
 	}
 
-	public String getBRid() {
+	public int getBRid() {
 		return BRid;
 	}
-	public void setBRid(String brid) {
+	public void setBRid(int brid) {
 		this.BRid = brid;
 	}
 	

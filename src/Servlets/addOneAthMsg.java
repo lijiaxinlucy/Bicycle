@@ -1,8 +1,9 @@
 package Servlets;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,20 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Daos.Blood_RoutineDao;
-import Daos.CyclistsDao;
-import model.Blood_Routine;
 
 /**
- * Servlet implementation class deleteCyclist
+ * Servlet implementation class addOneAthMsg
  */
-@WebServlet("/deleteCyclist")
-public class deleteCyclist extends HttpServlet {
+@WebServlet("/addOneAthMsg")
+public class addOneAthMsg extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public deleteCyclist() {
+    public addOneAthMsg() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,16 +34,26 @@ public class deleteCyclist extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		int brid=Integer.parseInt(request.getParameter("brid"));
-		String id=request.getParameter("id");
-		System.out.println(id);
-		System.out.println("被删除的brid是"+brid);
+		float speed,wbc,rbc,hgb,hct,mcv,hgb_rbc,mchc,plt;
+		String date=request.getParameter("date");
+		speed=Float.parseFloat(request.getParameter("speed"));
+		wbc=Float.parseFloat(request.getParameter("wbc"));
+		rbc=Float.parseFloat(request.getParameter("rbc"));
+		hgb=Float.parseFloat(request.getParameter("hgb"));
+		hct=Float.parseFloat(request.getParameter("hct"));
+		mcv=Float.parseFloat(request.getParameter("mcv"));
+		hgb_rbc=Float.parseFloat(request.getParameter("hgb_rbc"));
+		mchc=Float.parseFloat(request.getParameter("mchc"));
+		plt=Float.parseFloat(request.getParameter("plt"));
+		String cid=request.getParameter("cid");
 		Blood_RoutineDao blood_RoutineDao=new Blood_RoutineDao();
-		blood_RoutineDao.deleteOneBrMsg(brid);
-		System.out.println("删除成功");
-		response.sendRedirect("./Nutriologyathlete.jsp?id="+id);//我想在这里把id号也传进这个jsp界面怎么写
-		
-		
+		try {
+			blood_RoutineDao.addOneMsg(cid,date, speed, wbc, rbc, hgb, hct, mcv, hgb_rbc, mchc, plt);
+			response.sendRedirect("./Nutriologyathlete.jsp?id="+cid);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -56,3 +65,4 @@ public class deleteCyclist extends HttpServlet {
 	}
 
 }
+//

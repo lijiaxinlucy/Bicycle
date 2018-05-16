@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="./showAllCyclists?test=test">click</a>
+	<span style="white-space: pre;"> </span>
+	<form action="./test" id="importExcelForm" method="post"
+		enctype="multipart/form-data">
+		<input type="file" name="excelFile" id="file" /> 
+		<input type="submit" id="importExcel" class="uum_inputbutton" value="导入">
+	</form>
 </body>
 </html>

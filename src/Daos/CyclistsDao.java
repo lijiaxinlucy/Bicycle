@@ -31,26 +31,6 @@ public class CyclistsDao {
 		return obj;
 	}
 	
-	
-//	public static Object deleteCyclistAllBr(String cid,Timestamp timestamp){//通过cid和时间删除运动员的所有信息
-//		C_brDao c_brDao=new C_brDao();
-//		List<C_br> brid=c_brDao.getbrid(cid);//通过cid和时间找到所有brid
-//		String sql2="delete from Cyclists where Cid=:cid";
-//		String sql3="delete from Blood_Routine where BRid=:brid";
-//		Session session=DBConnection.getFactory().openSession();
-//		Query query1=session.createQuery(sql2);
-//		Query query2=session.createQuery(sql3);
-//		query1.setString("cid", cid);
-//		for(C_br cBr:brid){
-//			query2.setString("brid", cBr.getBRid());
-//			org.hibernate.Transaction transaction=session.beginTransaction();
-//			query2.executeUpdate();
-//		}
-//		org.hibernate.Transaction transaction=session.beginTransaction();
-//		query1.executeUpdate();
-//		transaction.commit();
-//		return null;
-//	}
 	public static Cyclists selectCyclistByCid(String Cid){//通过cid找到唯一的那个运动员
 		String hql="from Cyclists where Cid=:cid";
 		Session session=DBConnection.getFactory().openSession();
@@ -63,7 +43,7 @@ public class CyclistsDao {
 		else return null;
 		
 	}
-	public static Object selectCyclistsByCName(String CName){//通过cname找到所有的运动员（可能重名）
+	public static List<Cyclists> selectCyclistsByCName(String CName){//通过cname找到所有的运动员（可能重名）
 		String hql="from Cyclists where Cname=:cname";
 		Session session=DBConnection.getFactory().openSession();
 		Query<Cyclists> query=session.createQuery(hql);
@@ -72,13 +52,7 @@ public class CyclistsDao {
 		return obj;
 		
 	}
-	public static void updateCyclist(String Cid,Timestamp timestamp){//通过cid和时间找到运动员，
-			C_brDao c_brDao=new C_brDao();							//修改该运动员该天的数据
-			c_brDao.getbrid(Cid,timestamp);//找到了该运动员该天的信息
-			String hql="";
-	}
-	public void addOneCyclistBr(String cid,Timestamp timestamp){//增加一条一个运动员一天的数据
-		
-	}
+	
+	
 	
 }

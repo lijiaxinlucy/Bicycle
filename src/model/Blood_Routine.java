@@ -1,12 +1,11 @@
 package model;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.util.IllegalFormatCodePointException;
+import java.sql.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,10 +14,10 @@ import javax.persistence.Table;
 public class Blood_Routine {
 	
 	@Id
-	private String BRid;//主键
 	
+	private int BRid;//主键
 	@Column
-	java.sql.Timestamp BloodTestTime;
+	Date BloodTestTime;
 	@Column
 	private float WBC;
 	@Column           
@@ -35,20 +34,22 @@ public class Blood_Routine {
 	private float MCHC;
 	@Column
 	private float PLT;
+	@Column
+	private float Speed;
 	
-	public String getId() {
+	public int getId() {
 		return BRid;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.BRid = id;
 	}
 
-	public Timestamp getBloodTestTime() {
+	public Date getBloodTestTime() {
 		
 		return BloodTestTime;
 	}
-	public void setBloodTestTime(Timestamp time) {
-		this.BloodTestTime = time;
+	public void setBloodTestTime(Date date) {
+		this.BloodTestTime = date;
 	}
 	
 	public float getWBC() {
@@ -106,10 +107,16 @@ public class Blood_Routine {
 	public void setPLT(float plt) {
 		this.PLT = plt;
 	}
+	public float getSpeed() {
+		return Speed;
+	}
+	public void setSpeed(float speed) {
+		this.Speed = speed;
+	}
 	@Override
 	public String toString() {
 		return "athlete [BRid=" + BRid+",BloodTestTime="+BloodTestTime+",WBC="+WBC+",RBC="+RBC+
-				",HGB="+HGB+",HCT="+HCT+",MCV="+MCV+",HGB_RBC="+HGB_RBC+",MCHC="+MCHC+",PLT="+PLT+ "]";
+				",HGB="+HGB+",HCT="+HCT+",MCV="+MCV+",HGB_RBC="+HGB_RBC+",MCHC="+MCHC+",PLT="+PLT+",Speed="+Speed+ "]";
 	}
 	
 	
