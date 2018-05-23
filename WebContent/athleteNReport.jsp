@@ -5,7 +5,7 @@
 <html class="no-js">
 	<meta charset=UTF-8>
 	<head>
-		<title>总教练主页</title>
+		<title>营养学科教练</title>
 		<meta charset=UTF-8>
 		<!-- Bootstrap -->
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -232,7 +232,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="#">总教练主页</a>
+					<a class="brand" href="#">营养学科教练主页</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav pull-right">
 							<li class="dropdown">
@@ -250,10 +250,10 @@
 					<div>
 						<ul class="nav navbar-nav">
 							<li class="active">
-								<a href="./ShowUser">运动员管理</a>
+								<a href="./NutriologyCoach.jsp">运动员管理</a>
 							</li>
 							<li>
-								<a href="./ShowAnnounce">运动员整体分析报告</a>
+								<a href="./athleteNReport.jsp">运动员分析报告</a>
 							</li>
 						</ul>
 					</div>
