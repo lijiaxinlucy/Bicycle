@@ -11,23 +11,18 @@ import javax.swing.text.FlowView.FlowStrategy;
 public class Cyclists {
 	
 	@Id
-	private String Cid;//主键
+	private String CId;//主键
 	@Column
 	private String CName;
 	@Column
-	private String Sex;
+	private int Age;
 	@Column
-	private float CHeight;
-	@Column
-	private float CWeight;
-	@Column
-	private float Age;
-	
-	public String getCid() {
-		return Cid;
+	private double AvgSpeed;
+	public String getCId() {
+		return CId;
 	}
-	public void setCid(String cid) {
-		Cid = cid;
+	public void setCId(String cId) {
+		CId = cId;
 	}
 	public String getCName() {
 		return CName;
@@ -35,45 +30,22 @@ public class Cyclists {
 	public void setCName(String cName) {
 		CName = cName;
 	}
-	public String getName() {
-		return CName;
-	}
-	public void setName(String name) {
-		this.CName = name;
-	}
-	
-	public String getSex() {
-		return Sex;
-	}
-	public void setSex(String sex) {
-		this.Sex= sex;
-	}
-	
-	public float  getCHeight() {
-		return CHeight;
-	}
-	public void setCHeight(int cHeight) {
-		this.CHeight = cHeight;
-	}
-	
-	public float  getCWeight() {
-		return CWeight;
-	}
-	public void setCWeight(int cWeight) {
-		this.CWeight = cWeight;
-	}
-	public float  getCAge() {
+	public int getAge() {
 		return Age;
 	}
 	public void setAge(int age) {
-		this.CWeight = age;
+		Age = age;
+	}
+	public double getAvgSpeed() {
+		return AvgSpeed;
+	}
+	public void setAvgSpeed(double avgSpeed) {
+		AvgSpeed = avgSpeed;
 	}
 	@Override
 	public String toString() {
-		return "Cyclists [Cid=" + Cid + ", CName=" + CName + ", Sex=" + Sex + ", CHeight=" + CHeight + ", CWeight="
-				+ CWeight + ", Age=" + Age +"]";
+		return "Cyclists [CId=" + CId + ", CName=" + CName + ", Age=" + Age + ", AvgSpeed=" + AvgSpeed + "]";
 	}
-	
 	
 	
 }

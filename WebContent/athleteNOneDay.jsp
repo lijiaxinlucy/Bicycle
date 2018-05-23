@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@page import="Daos.*"%>
 <%@page import="model.*"%>
 <%@page import="model.Cyclists"%>
@@ -77,7 +79,10 @@
 									<button class="btn btn-default" type="submit">查找日期</button>
 									</form>
 									</div>		<!--  结束时间输入输出框 -->
-								
+		
+									<div class="btn-group pull-left">                  
+                                         <a href="#"><button class="btn btn-success">批量导入 <i class="icon-plus icon-white"></i></button></a>
+									</div>
 									<div class="btn-group pull-left">   
                                         <a data-toggle="modal" href="#addathlete"><button class="btn btn-success">录入 <i class="icon-plus icon-white"></i></button></a>
 									</div></div>
@@ -102,124 +107,134 @@
 						                </tr>
 						              </thead>
 						              <tbody>						             
-						              <tr >
+						                <tr >
 	                <%
+	                	
    	                	System.out.println("该运动员id是"+id);
-   	                	//String date=request.getParameter("date");
-   	                	Cyclists c=new Cyclists();
-   	                	C_nDao c_nDao=new C_nDao();
-   	                	List<Integer> obj=c_nDao.getNid(id);
-   	                	for(int str:obj){
-   	                		//System.out.println("nid是"+str);
+   	                	String date=request.getParameter("date");
+   	                	
      	                NTableDao nTableDao=new NTableDao();
-     	                List<Object[]> o=nTableDao.getNTableByNid(str);
-     	                if(o!=null)
+     	                List<Object[]> o=nTableDao.getNTableByDate(id, date);
+     	                if(o!=null){
+     	                for(Object[] list:o)
      	                {
-	     	                for(Object[] list:o)
-	     	                {
-		                %>
-				              <td><%=list[0] %></td>
-			                  <td><%=list[1] %></td>
-			                  <td><%=list[2] %></td>
-			                  <td><%=list[3] %></td>	
-							  <td><%=list[4] %></td>	
-							  <td><%=list[5] %></td>	
-							  <td><%=list[6] %></td>	
-							  <td><%=list[7] %></td>	
-							  <td><%=list[8] %></td>	
-							  <td><%=list[9] %></td>	
-							  <td><%=list[10] %></td>	
-							  <td><%=list[11] %></td>	
-							  <td>
-									<div class="btn-group">
-										<button type="button" class="btn btn-primary">操作</button>
-										<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-											<span class="caret"></span>													
-										</button>
-										<ul class="dropdown-menu" role="menu">
-											<li>
-												<a data-toggle="modal" href="#changeathlete" onclick="changeCallback">修改</a>
-											</li>
-											<li class="divider"></li>
-											<li><a href="./deleteCyclist?nid=<%=str %>&id=<%=list[1] %>">删除</a></li>												
-										</ul>
-									</div></td></tr>
-							   <%
-	     	                	} 
+	                %>
+			              <td><%=list[0] %></td>
+		                  <td><%=list[1] %></td>
+		                  <td><%=list[2] %></td>
+		                  <td><%=list[3] %></td>	
+						  <td><%=list[4] %></td>	
+						  <td><%=list[5] %></td>	
+						  <td><%=list[6] %></td>	
+						  <td><%=list[7] %></td>	
+						  <td><%=list[8] %></td>	
+						  <td><%=list[9] %></td>	
+						  <td><%=list[10] %></td>	
+						  <td><%=list[11] %></td>	
+						  <td>
+						 
+											<div class="btn-group">
+												<button type="button" class="btn btn-primary">操作</button>
+												<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+													<span class="caret"></span>													
+												</button>
+												<ul class="dropdown-menu" role="menu">
+													<li>
+														<a data-toggle="modal" href="#changeathlete">修改</a>
+													</li>
+													<li class="divider"></li>
+													<li><a href="./deleteCyclist?nid=<%=list[12] %>&id=<%=list[1] %>">删除</a></li>												
+												</ul>
+											</div>	
+										  </td>
+						                </tr>
+						                <%
+     	                	} 
      	                }
+     	                
      	                else
-     	                	response.sendRedirect("./error.jsp");}
-   	                  %>
-			</tbody></table></div></div> </div></div></div></div>
-	       <!-- 模态框（Modal） -->
-			<div class="modal fade" id="changeathlete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" overflow="auto" style="display:none">
+     	                	response.sendRedirect("./error.jsp");
+     	                 %>
+						              </tbody>
+						            </table>
+                                </div>
+                          </div>
+                        </div>
+                    </div>
+			</div>
+	</div>
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="changeathlete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" overflow="auto" style="display:none">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">修改运动信息</h4>
-				<form class="form-horizontal" action="./updateOneAthMsg?cid=<%=id %>" method="post">
-					<div class="modal-body">
-					<div class="control-group"><label class="control-label" for="input01">速度km/m</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="speed"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">糖类摄入量/g</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="suger"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">蛋白质摄入量/g</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="protein"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">脂肪摄入量/g</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="fat"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">矿物盐和水/ml</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="salt"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">血糖含量mmol/L</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="bs"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">视黄醇结合蛋白mg/l</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="rbp"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">营养日摄入量/千卡</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="energy"> </div></div>
-					</div>
-					<!--表单到此结束。，点击提交把表单上传即可-->
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+						<h4 class="modal-title" id="myModalLabel">
+					修改运动信息
+				</h4>
+				<div class="modal-body">
+						<form class="form-horizontal">
+						<div class="control-group"><label class="control-label" for="input01">身高</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge"> </div></div>
+						<div class="control-group"><label class="control-label" for="input01">体重</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge"> </div></div>
+						<div class="control-group"><label class="control-label" for="input01">运动成绩</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge"> </div></div>
+						<div class="control-group"><label class="control-label" for="input01">白细胞数</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge"> </div></div>
+						<div class="control-group"><label class="control-label" for="input01">红细胞数</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge"> </div></div>
+						<div class="control-group"><label class="control-label" for="input01">血红蛋白</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge"> </div></div>
+						<div class="control-group"><label class="control-label" for="input01">红细胞压积</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge"> </div></div>
+						<div class="control-group"><label class="control-label" for="input01">红细胞平均体积</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge"> </div></div>
+						<div class="control-group"><label class="control-label" for="input01">红细胞平均含量</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge"> </div></div>
+						<div class="control-group"><label class="control-label" for="input01">平均红细胞血红蛋白浓度</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge"> </div></div>
+						<div class="control-group"><label class="control-label" for="input01">血小板计数</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge"> </div></div>
+						</form>
+				</div>
+						<!--
+                        	表单到此结束。，点击提交把表单上传即可
+                        -->
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-							<button type="button" class="btn btn-primary">提交更改</button></div>
-				</form></div>
-				<!-- /.modal-content -->
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+							<button type="button" class="btn btn-primary">
+					提交更改
+				</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
 				</div>
 				<!-- /.modal -->
 			</div></div>
-			<% %>
 		<!-- 模态框（Modal） -->
 		<div class="modal fade" id="addathlete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" overflow="auto" style="display:none">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">增加运动信息</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+						<h4 class="modal-title" id="myModalLabel">
+					增加运动信息
+				</h4>
 				<form class="form-horizontal" action="./addOneAthMsg?cid=<%=id %>" method="post">
 				<div class="modal-body">
-					<div class="control-group"><label class="control-label" for="input01">训练时间</label><div class="controls"> 
-					<input type="date"  required="requered" class="form-control" name="date"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">糖类摄入量/g</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="suger"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">蛋白质摄入量/g</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="protein"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">脂肪摄入量/g</label><div class="controls"> 
-					<input type="text" required="requered" class="input-xlarge" name="fat"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">矿物盐和水/ml</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="salt"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">血糖含量mmol/L</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="bs"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">视黄醇结合蛋白mg/l</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="rbp"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">营养日摄入量/千卡</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="energy"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">速度km/m</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="speed"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">训练时间</label><div class="controls"> <input type="date"  id="searchdate"class="form-control" name="date"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">运动成绩</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="speed"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">白细胞数</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="wbc"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">红细胞数</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="rbc"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">血红蛋白</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="hgb"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">红细胞压积</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="hct"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">红细胞平均体积</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="mcv"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">红细胞平均含量</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="hgb_rbc"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">平均红细胞血红蛋白浓度</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="mchc"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">血小板计数</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="plt"> </div></div>
 				</div>
 				<!--表单到此结束。，点击提交把表单上传即可-->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-					<input type="submit" class="btn btn-primary" value="添加" ></div>
-				</form></div>
+					<input type="submit" class="btn btn-primary" value="添加">
+				</div>
+				</form>
+				</div>
 				<!-- /.modal-content -->
 				</div>
 				<!-- /.modal -->
@@ -230,6 +245,7 @@
         <script src="assets/scripts.js"></script>
         <script>
 		(function($){
+		    //插件
 		    $.extend($,{
 		        //命名空间
 		        sortTable:{
@@ -242,6 +258,7 @@
 		                for (var i=0; i<tr.length; i++ ) {
 		                    trValue[i] = tr[i];  //将表格中各行的信息存储在新建的数组中
 		                }
+		         
 		                if (tbody.sortCol == Idx) {
 		                    trValue.reverse(); //如果该列已经进行排序过了，则直接对其反序排列
 		                } else {
@@ -256,6 +273,7 @@
 		                for (var i=0; i<trValue.length; i++ ) {
 		                    fragment.appendChild(trValue[i]);
 		                }
+		         
 		                tbody.appendChild(fragment); //将排序的结果替换掉之前的值
 		                tbody.sortCol = Idx;
 		            }

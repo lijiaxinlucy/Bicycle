@@ -7,17 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Daos.RTableDao;
+
 /**
- * Servlet implementation class showOneDay
+ * Servlet implementation class deleteRCyclist
  */
-@WebServlet("/showOneDay")
-public class showOneDay extends HttpServlet {
+@WebServlet("/deleteRCyclist")
+public class deleteRCyclist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public showOneDay() {
+    public deleteRCyclist() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,9 +30,16 @@ public class showOneDay extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String date=request.getParameter("date");
-		System.out.println(date);
-		response.sendRedirect("./showOneDay.jsp?date="+date);
+		int rid=Integer.parseInt(request.getParameter("rid"));
+		String id=request.getParameter("id");
+		System.out.println(id);
+		System.out.println("被删除的rid是"+rid);
+		RTableDao rTableDao=new RTableDao();
+		rTableDao.deleteOneRMsg(rid);
+		System.out.println("删除成功");
+		response.sendRedirect("./Rehabilitationathlete.jsp?id="+id);//我想在这里把id号也传进这个jsp界面怎么写
+		
+		
 	}
 
 	/**

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <html class="no-js">
@@ -8,7 +8,7 @@
 <%@ page import="Daos.*" %>
 <%@ page import="java.util.*" %>
 	<head>
-		<title>营养学科教练主页</title>
+		<title>力学学科教练主页</title>
 		<meta charset=UTF-8>
 		<!-- Bootstrap -->
 		<script
@@ -35,7 +35,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="#">营养学科教练</a>
+					<a class="brand" href="#">力学学科教练</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav pull-right">
 							<li class="dropdown">
@@ -53,7 +53,7 @@
 					<div>
 						<ul class="nav navbar-nav">
 							<li class="active">
-								<a href="./NutriologyCoach.jsp" id="gardCyclist">运动员管理</a>
+								<a href="./DynamicsCoach.jsp" id="gardCyclist">运动员管理</a>
 							</li>
 							<li>
 								<a href="./showReports">运动员分析报告</a>
@@ -67,11 +67,10 @@
 						<div class="navbar navbar-inner block-header">
 							<div class="muted pull-left">运动员信息</div>
 						</div>
-						<%Date date=new Date(); %>
 						<div class="block-content collapse in">
 							<div class="span12">
 								<div class="btn-group pull-right">
-									<form class="navbar-form navbar-right" action="./searchCyclist?date=<%=date %>" method="post" role="search">
+									<form class="navbar-form navbar-right" action="./searchCyclist" method="post" role="search">
 										<div class="input-group">
 											<select name="flagParam">
 												<option value="areaID">按运动员ID查找</option>
@@ -86,54 +85,49 @@
 									</form>
 								</div>
 								<div class="btn-group pull-left">
-								<form action="./insertData" method="post" enctype="multipart/form-data">
-									<input type="file" id="id1" name="name1" value="选择文件">
-									 <input type="submit" class="btn btn-success">批量添加 
-										<i class="icon-plus icon-white"></i>
-									
-								</form>
+									<input type="file" value="dd">
 								</div>
 								
 								<div class="btn-group pull-left"> 
 									<!--  时间输入输出框 -->
-									<form class="navbar-form navbar-right" action="./showOneDay" method="post" role="search">
+									<form class="navbar-form navbar-right" action="./showDOneDay" method="post" role="search">
 										<div class="input-group">
 											<input type="date" id="startdate" class="form-control" width=2px name="date">
 											<button class="btn btn-default" type="submit">查找日期</button>
 										</div>
 									</form>
 								</div>
-								<table class="table" style="  margin-bottom: 80px;"  summary="user infomation table" id="tableSort">
-								<thead bgcolor="#afeeee">
-								<tr>
-								<th onclick="$.sortTable.sort('tableSort',0)" style="cursor: pointer;">ID</th>
-								<th onclick="$.sortTable.sort('tableSort',1)" style="cursor: pointer;">姓名</th>
-								<th onclick="$.sortTable.sort('tableSort',2)" style="cursor: pointer;">年龄</th>
-								<th onclick="$.sortTable.sort('tableSort',3)" style="cursor: pointer;">时间</th>
-								<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">糖类摄入量/g</th>
-								<th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">蛋白质摄入量/g</th>
-								<th onclick="$.sortTable.sort('tableSort',6)" style="cursor: pointer;">脂肪摄入量/g</th>
-								<th onclick="$.sortTable.sort('tableSort',7)" style="cursor: pointer;">矿物盐和水/ml</th>
-								<th onclick="$.sortTable.sort('tableSort',8)" style="cursor: pointer;">血糖含量mmol/L</th>
-								<th onclick="$.sortTable.sort('tableSort',9)" style="cursor: pointer;">视黄醇结合蛋白mg/l</th>
-								<th onclick="$.sortTable.sort('tableSort',10)" style="cursor: pointer;">营养日摄入量/千卡</th>
-								<th onclick="$.sortTable.sort('tableSort',11)" style="cursor: pointer;">速度km/m</th>
-								</tr>
-								</thead>
+								<table class="table" style=" margin-bottom: 80px;"  summary="user infomation table" id="tableSort">
+									<thead bgcolor="#afeeee">
+										<tr>
+											<th onclick="$.sortTable.sort('tableSort',0)" style="cursor: pointer;">ID</th>
+											<th onclick="$.sortTable.sort('tableSort',1)" style="cursor: pointer;">姓名</th>
+											<th onclick="$.sortTable.sort('tableSort',2)" style="cursor: pointer;">性别</th>
+											<th onclick="$.sortTable.sort('tableSort',3)" style="cursor: pointer;">身高</th>
+											<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">体重</th>
+											<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">年龄</th>
+											<th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">时间</th>
+											<th onclick="$.sortTable.sort('tableSort',6)" style="cursor: pointer;">白细胞数</th>
+											<th onclick="$.sortTable.sort('tableSort',7)" style="cursor: pointer;">红细胞数</th>
+											<th onclick="$.sortTable.sort('tableSort',8)" style="cursor: pointer;">血红蛋白</th>
+											<th onclick="$.sortTable.sort('tableSort',9)" style="cursor: pointer;">红细胞压积</th>
+											<th onclick="$.sortTable.sort('tableSort',10)" style="cursor: pointer;">红细胞平均体积</th>
+											<th onclick="$.sortTable.sort('tableSort',11)" style="cursor: pointer;">红细胞平均含量</th>
+											<th onclick="$.sortTable.sort('tableSort',12)" style="cursor: pointer;">平均红细胞血红蛋白浓度</th>
+											<th onclick="$.sortTable.sort('tableSort',13)" style="cursor: pointer;">血小板计数</th>
+										</tr>
+									</thead>
 									<tbody>
 										<tr >
 					<% 
-					DateFormat simDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-					String punString=simDateFormat.format(date);
-					System.out.println(punString);
-					NTableDao nTableDao=new NTableDao();
-					List<Object[]> result=nTableDao.getNTable(punString);
-					//System.out.println(result.size());
+					String punString=request.getParameter("date");
+					DTableDao dTableDao=new DTableDao();
+					List<Object[]> result=dTableDao.getDTable(punString);
 					if(result!=null){
 					for(Object[] obj: result ){
 					%>
-											<td><a href="./Nutriologyathlete.jsp?id=<%=obj[0] %>"><%=obj[0] %></a></td>
-											<td ><a href="./Nutriologyathlete.jsp?id=<%=obj[0] %>"><%=obj[1] %></a></td>
+											<td><a href="./Dynamicsathlete.jsp?id=<%=obj[0] %>"><%=obj[0] %></a></td>
+											<td><a href="./Dynamicsathlete.jsp?id=<%=obj[0] %>"><%=obj[1] %></a></td>
 											<td><%=obj[2] %></td>
 											<td><%=obj[3] %></td>
 											<td><%=obj[4] %></td>
@@ -144,6 +138,9 @@
 											<td><%=obj[9] %></td>
 											<td><%=obj[10] %></td>
 											<td><%=obj[11] %></td>
+											<td><%=obj[12] %></td>
+											<td><%=obj[13] %></td>
+											<td><%=obj[14] %></td>
 										</tr>
 										<%}
 					}

@@ -85,7 +85,9 @@
 									</form>
 								</div>
 								<div class="btn-group pull-left">
-									<input type="file" value="dd">
+								<input type="file" value="dd">
+								<!-- <button class="btn btn-success">批量添加 
+								<i class="icon-plus icon-white"></i></button> -->
 								</div>
 								
 								<div class="btn-group pull-left"> 
@@ -97,32 +99,31 @@
 										</div>
 									</form>
 								</div>
-								<table class="table" style=" margin-bottom: 80px;"  summary="user infomation table" id="tableSort">
+								<table class="table" style="  margin-bottom: 80px;"  summary="user infomation table" id="tableSort">
 									<thead bgcolor="#afeeee">
 										<tr>
 											<th onclick="$.sortTable.sort('tableSort',0)" style="cursor: pointer;">ID</th>
 											<th onclick="$.sortTable.sort('tableSort',1)" style="cursor: pointer;">姓名</th>
-											<th onclick="$.sortTable.sort('tableSort',2)" style="cursor: pointer;">性别</th>
-											<th onclick="$.sortTable.sort('tableSort',3)" style="cursor: pointer;">身高</th>
-											<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">体重</th>
-											<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">年龄</th>
-											<th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">时间</th>
-											<th onclick="$.sortTable.sort('tableSort',6)" style="cursor: pointer;">白细胞数</th>
-											<th onclick="$.sortTable.sort('tableSort',7)" style="cursor: pointer;">红细胞数</th>
-											<th onclick="$.sortTable.sort('tableSort',8)" style="cursor: pointer;">血红蛋白</th>
-											<th onclick="$.sortTable.sort('tableSort',9)" style="cursor: pointer;">红细胞压积</th>
-											<th onclick="$.sortTable.sort('tableSort',10)" style="cursor: pointer;">红细胞平均体积</th>
-											<th onclick="$.sortTable.sort('tableSort',11)" style="cursor: pointer;">红细胞平均含量</th>
-											<th onclick="$.sortTable.sort('tableSort',12)" style="cursor: pointer;">平均红细胞血红蛋白浓度</th>
-											<th onclick="$.sortTable.sort('tableSort',13)" style="cursor: pointer;">血小板计数</th>
+											<th onclick="$.sortTable.sort('tableSort',2)" style="cursor: pointer;">年龄</th>
+											<th onclick="$.sortTable.sort('tableSort',3)" style="cursor: pointer;">时间</th>
+											<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">糖类摄入量/g</th>
+											<th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">蛋白质摄入量/g</th>
+											<th onclick="$.sortTable.sort('tableSort',6)" style="cursor: pointer;">脂肪摄入量/g</th>
+											<th onclick="$.sortTable.sort('tableSort',7)" style="cursor: pointer;">矿物盐和水/ml</th>
+											<th onclick="$.sortTable.sort('tableSort',8)" style="cursor: pointer;">血糖含量mmol/L</th>
+											<th onclick="$.sortTable.sort('tableSort',9)" style="cursor: pointer;">视黄醇结合蛋白mg/l</th>
+											<th onclick="$.sortTable.sort('tableSort',10)" style="cursor: pointer;">营养日摄入量/千卡</th>
+											<th onclick="$.sortTable.sort('tableSort',11)" style="cursor: pointer;">速度km/m</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr >
 					<% 
-					String punString=request.getParameter("date");
-					Blood_RoutineDao blood_RoutineDao=new Blood_RoutineDao();
-					List<Object[]> result=blood_RoutineDao.getBloodRoutine(punString);
+					String date=request.getParameter("date");
+					System.out.println(date);
+					NTableDao nTableDao=new NTableDao();
+					List<Object[]> result=nTableDao.getNTable(date);
+					System.out.println(result.size());
 					if(result!=null){
 					for(Object[] obj: result ){
 					%>
@@ -138,9 +139,6 @@
 											<td><%=obj[9] %></td>
 											<td><%=obj[10] %></td>
 											<td><%=obj[11] %></td>
-											<td><%=obj[12] %></td>
-											<td><%=obj[13] %></td>
-											<td><%=obj[14] %></td>
 										</tr>
 										<%}
 					}

@@ -2,6 +2,7 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,10 +37,12 @@ public class searchCyclist extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String flagParam,realParam,type;
+		String flagParam,realParam,type,date;
 		flagParam=request.getParameter("flagParam");//选项
 		realParam=request.getParameter("realParam");//搜索
 		type=(String) request.getParameter("type");
+		date=request.getParameter("date");
+		System.out.println("date="+date);
 		System.out.println("type:"+type);
 		System.out.println("flagParam:"+flagParam);
 		System.out.println("realParam:"+realParam);
@@ -52,9 +55,8 @@ public class searchCyclist extends HttpServlet {
 		}
 		else if(flagParam.equals("name")){
 			CyclistsDao cyclistsDao=new CyclistsDao();
-			Cyclists cyclist=new Cyclists();
-			cyclist=cyclistsDao.selectCyclistByCid(realParam);
-			System.out.println(cyclist.getCName());
+			List<Cyclists> c=cyclistsDao.selectCyclistsByCName(realParam);
+			//System.out.println(cyclist.getCName());
 		}
 	}
 		

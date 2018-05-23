@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>登陆</title>
+<title>登录</title>
 <!-- Bootstrap -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen">
@@ -25,7 +25,7 @@
 			<input type="text" class="input-block-level" name="id"  placeholder="请输入id"> 
 			<input type="password" class="input-block-level" placeholder="请输入密码"
 				name="password" > <label class="input-block-level"> 
-			<input class="btn btn-large btn-primary"  type="submit"  value="登陆">
+			<input class="btn btn-large btn-primary"  type="submit"  value="登录">
 		    <button class="btn btn-large " style="margin-left: 120px;"
 				type="reset">重置</button>
 		</form>

@@ -1,6 +1,9 @@
 package Servlets;
 
 import java.io.IOException;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,7 +14,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Daos.Blood_RoutineDao;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.jdbc.ReturningWork;
+
+import Daos.NTableDao;
+
 
 /**
  * Servlet implementation class addOneAthMsg
@@ -34,26 +42,29 @@ public class addOneAthMsg extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		float speed,wbc,rbc,hgb,hct,mcv,hgb_rbc,mchc,plt;
+		int suger,protein,fat,salt,energy;
+		double bs,rbp,speed;
 		String date=request.getParameter("date");
-		speed=Float.parseFloat(request.getParameter("speed"));
-		wbc=Float.parseFloat(request.getParameter("wbc"));
-		rbc=Float.parseFloat(request.getParameter("rbc"));
-		hgb=Float.parseFloat(request.getParameter("hgb"));
-		hct=Float.parseFloat(request.getParameter("hct"));
-		mcv=Float.parseFloat(request.getParameter("mcv"));
-		hgb_rbc=Float.parseFloat(request.getParameter("hgb_rbc"));
-		mchc=Float.parseFloat(request.getParameter("mchc"));
-		plt=Float.parseFloat(request.getParameter("plt"));
+		speed=Double.parseDouble(request.getParameter("speed"));
+		suger=Integer.parseInt(request.getParameter("suger"));
+		protein=Integer.parseInt(request.getParameter("protein"));
+		fat=Integer.parseInt(request.getParameter("fat"));
+		salt=Integer.parseInt(request.getParameter("salt"));
+		bs=Double.parseDouble(request.getParameter("bs"));
+		rbp=Double.parseDouble(request.getParameter("rbp"));
+		energy=Integer.parseInt(request.getParameter("energy"));
 		String cid=request.getParameter("cid");
-		Blood_RoutineDao blood_RoutineDao=new Blood_RoutineDao();
+		NTableDao nTableDao=new NTableDao();
 		try {
-			blood_RoutineDao.addOneMsg(cid,date, speed, wbc, rbc, hgb, hct, mcv, hgb_rbc, mchc, plt);
+			nTableDao.addOneMsg(cid, date, suger, protein, fat, salt, bs, rbp, energy, speed);
 			response.sendRedirect("./Nutriologyathlete.jsp?id="+cid);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		
+		
 	}
 
 	/**

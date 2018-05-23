@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Daos.Blood_RoutineDao;
 import Daos.CyclistsDao;
-import model.Blood_Routine;
+import Daos.NTableDao;
+import model.NTable;
 
 /**
  * Servlet implementation class deleteCyclist
@@ -35,12 +35,12 @@ public class deleteCyclist extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		int brid=Integer.parseInt(request.getParameter("brid"));
+		int nid=Integer.parseInt(request.getParameter("nid"));
 		String id=request.getParameter("id");
 		System.out.println(id);
-		System.out.println("被删除的brid是"+brid);
-		Blood_RoutineDao blood_RoutineDao=new Blood_RoutineDao();
-		blood_RoutineDao.deleteOneBrMsg(brid);
+		System.out.println("被删除的nid是"+nid);
+		NTableDao ntable=new NTableDao();
+		ntable.deleteOneBrMsg(nid);
 		System.out.println("删除成功");
 		response.sendRedirect("./Nutriologyathlete.jsp?id="+id);//我想在这里把id号也传进这个jsp界面怎么写
 		

@@ -11,8 +11,6 @@ import org.hibernate.query.Query;
 import org.junit.experimental.theories.Theories;
 
 import dbutils.DBConnection;
-import model.Blood_Routine;
-import model.C_br;
 import model.Cyclists;
 
 public class CyclistsDao {
@@ -31,11 +29,16 @@ public class CyclistsDao {
 		return obj;
 	}
 	
-	public static Cyclists selectCyclistByCid(String Cid){//通过cid找到唯一的那个运动员
-		String hql="from Cyclists where Cid=:cid";
+	public List<Object[]> selectCyclistByCid(String cid){//通过cid找到唯一的那个运动员
+		String hql="select cy.CId,cy.CName,cy.Age,n.NDate,"
+				+ "n.Suger,n.Protein,n.Fat,n.Salt,"
+				+ "n.Bs,n.Rbp,n.Energy,n.Speed,c.NId "
+				+ "from NTable as n,C_n as c,Cyclists as cy"
+				+ " where CId=:cid "
+				+ "and n.NId=c.NId and cy.CId=c.CId";//13
 		Session session=DBConnection.getFactory().openSession();
 		Query<Cyclists> query=session.createQuery(hql);
-		query.setString("cid", Cid);
+		query.setString("cid", cid);
 		List<Cyclists> obj=query.list();
 		//return (Cyclists) obj;
 		if(obj!=null && !obj.isEmpty())

@@ -124,8 +124,8 @@
 					Date date=new Date();
 					DateFormat simDateFormat=new SimpleDateFormat("yyyy-MM-dd");
 					String punString=simDateFormat.format(date);
-					Blood_RoutineDao blood_RoutineDao=new Blood_RoutineDao();
-					List<Object[]> result=blood_RoutineDao.getBloodRoutine(punString);
+					NTableDao nTableDao=new NTableDao();
+					List<Object[]> result=nTableDao.getNTable(punString);
 					if(result!=null){
 					for(Object[] obj: result ){
 					%>

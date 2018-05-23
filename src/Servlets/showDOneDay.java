@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class showOneDay
+ * Servlet implementation class showDOneDay
  */
-@WebServlet("/showOneDay")
-public class showOneDay extends HttpServlet {
+@WebServlet("/showDOneDay")
+public class showDOneDay extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public showOneDay() {
+    public showDOneDay() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,7 +30,7 @@ public class showOneDay extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String date=request.getParameter("date");
 		System.out.println(date);
-		response.sendRedirect("./showOneDay.jsp?date="+date);
+		response.sendRedirect("./showDOneDay.jsp?date="+date);
 	}
 
 	/**
