@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "rtable")//数据库里的rtable表
+@Table(name = "rtable")//数据库里的ph_table表
 public class RTable {
 	
 	@Id
@@ -16,35 +16,39 @@ public class RTable {
 	@Column
 	private Date RDate;
 	@Column
-	private double Weight;
+	private double HGB;
 	@Column
-	private double Air;
+	private double STTT;
 	@Column
-	private int Ang;
+	private double CK;
 	@Column
-	private double Are;
+	private double ARG;
 	@Column
-	private double F1;
+	private double TYR;
 	@Column
-	private double High;
+	private double SLEEP;
 	@Column
-	private int F2;
+	private int ICE;
+	@Column
+	private int MSG;
 	@Column
 	private double Speed;
 	@Column
-	private String Weight_R;
+	private String HGB_R;
 	@Column
-	private String Air_R;
+	private String STTT_R;
 	@Column
-	private String Ang_R;
+	private String CK_R;
 	@Column
-	private String Are_R;
+	private String ARG_R;
 	@Column
-	private String F1_R;
+	private String TRY_R;
 	@Column
-	private String High_R;
+	private String SLEEP_R;
 	@Column
-	private String F2_R;
+	private String ICE_R;
+	@Column
+	private String MSG_R;
 	@Column
 	private String Speed_R;
 	public int getRId() {
@@ -59,47 +63,53 @@ public class RTable {
 	public void setRDate(Date rDate) {
 		RDate = rDate;
 	}
-	public double getWeight() {
-		return Weight;
+	public double getHGB() {
+		return HGB;
 	}
-	public void setWeight(double weight) {
-		Weight = weight;
+	public void setHGB(double hGB) {
+		HGB = hGB;
 	}
-	public double getAir() {
-		return Air;
+	public double getSTTT() {
+		return STTT;
 	}
-	public void setAir(double air) {
-		Air = air;
+	public void setSTTT(double sTTT) {
+		STTT = sTTT;
 	}
-	public int getAng() {
-		return Ang;
+	public double getCK() {
+		return CK;
 	}
-	public void setAng(int ang) {
-		Ang = ang;
+	public void setCK(double cK) {
+		CK = cK;
 	}
-	public double getAre() {
-		return Are;
+	public double getARG() {
+		return ARG;
 	}
-	public void setAre(double are) {
-		Are = are;
+	public void setARG(double aRG) {
+		ARG = aRG;
 	}
-	public double getF1() {
-		return F1;
+	public double getTRY() {
+		return getTRY();
 	}
-	public void setF1(double f1) {
-		F1 = f1;
+	public void setTYR(double tYR) {
+		TYR = tYR;
 	}
-	public double getHigh() {
-		return High;
+	public double getSLEEP() {
+		return SLEEP;
 	}
-	public void setHigh(double high) {
-		High = high;
+	public void setSLEEP(double sLEEP) {
+		SLEEP = sLEEP;
 	}
-	public int getF2() {
-		return F2;
+	public int getICE() {
+		return ICE;
 	}
-	public void setF2(int f2) {
-		F2 = f2;
+	public void setICE(int iCE) {
+		ICE = iCE;
+	}
+	public int getMSG() {
+		return MSG;
+	}
+	public void setMSG(int mSG) {
+		MSG = mSG;
 	}
 	public double getSpeed() {
 		return Speed;
@@ -107,47 +117,53 @@ public class RTable {
 	public void setSpeed(double speed) {
 		Speed = speed;
 	}
-	public String getWeight_R() {
-		return Weight_R;
+	public String getHGB_R() {
+		return HGB_R;
 	}
-	public void setWeight_R(String weight_R) {
-		Weight_R = weight_R;
+	public void setHGB_R(String hGB_R) {
+		HGB_R = hGB_R;
 	}
-	public String getAir_R() {
-		return Air_R;
+	public String getSTTT_R() {
+		return STTT_R;
 	}
-	public void setAir_R(String air_R) {
-		Air_R = air_R;
+	public void setSTTT_R(String sTTT_R) {
+		STTT_R = sTTT_R;
 	}
-	public String getAng_R() {
-		return Ang_R;
+	public String getCK_R() {
+		return CK_R;
 	}
-	public void setAng_R(String ang_R) {
-		Ang_R = ang_R;
+	public void setCK_R(String cK_R) {
+		CK_R = cK_R;
 	}
-	public String getAre_R() {
-		return Are_R;
+	public String getARG_R() {
+		return ARG_R;
 	}
-	public void setAre_R(String are_R) {
-		Are_R = are_R;
+	public void setARG_R(String aRG_R) {
+		ARG_R = aRG_R;
 	}
-	public String getF1_R() {
-		return F1_R;
+	public String getTRY_R() {
+		return TRY_R;
 	}
-	public void setF1_R(String f1_R) {
-		F1_R = f1_R;
+	public void setTRY_R(String tRY_R) {
+		TRY_R = tRY_R;
 	}
-	public String getHigh_R() {
-		return High_R;
+	public String getSLEEP_R() {
+		return SLEEP_R;
 	}
-	public void setHigh_R(String high_R) {
-		High_R = high_R;
+	public void setSLEEP_R(String sLEEP_R) {
+		SLEEP_R = sLEEP_R;
 	}
-	public String getF2_R() {
-		return F2_R;
+	public String getICE_R() {
+		return ICE_R;
 	}
-	public void setF2_R(String f2_R) {
-		F2_R = f2_R;
+	public void setICE_R(String iCE_R) {
+		ICE_R = iCE_R;
+	}
+	public String getMSG_R() {
+		return MSG_R;
+	}
+	public void setMSG_R(String mSG_R) {
+		MSG_R = mSG_R;
 	}
 	public String getSpeed_R() {
 		return Speed_R;
@@ -157,10 +173,12 @@ public class RTable {
 	}
 	@Override
 	public String toString() {
-		return "RTable [RId=" + RId + ", RDate=" + RDate + ", Weight=" + Weight + ", Air=" + Air + ", Ang=" + Ang
-				+ ", Are=" + Are + ", F1=" + F1 + ", High=" + High + ", F2=" + F2 + ", Speed=" + Speed + ", Weight_R="
-				+ Weight_R + ", Air_R=" + Air_R + ", Ang_R=" + Ang_R + ", Are_R=" + Are_R + ", F1_R=" + F1_R
-				+ ", High_R=" + High_R + ", F2_R=" + F2_R + ", Speed_R=" + Speed_R + "]";
+		return "DTable [DId=" + RId + ", DDate=" + RDate + ", HGB=" + HGB + ", STTT=" + STTT + ", CK=" + CK + ", ARG="
+				+ ARG + ", TRY=" + TYR + ", SLEEP=" + SLEEP + ", ICE=" + ICE + ", MSG=" + MSG + ", Speed=" + Speed
+				+ ", HGB_R=" + HGB_R + ", STTT_R=" + STTT_R + ", CK_R=" + CK_R + ", ARG_R=" + ARG_R + ", TRY_R=" + TRY_R
+				+ ", SLEEP_R=" + SLEEP_R + ", ICE_R=" + ICE_R + ", MSG_R=" + MSG_R + ", Speed_R=" + Speed_R + "]";
 	}
+	
+	
 	
 }

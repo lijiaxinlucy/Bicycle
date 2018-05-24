@@ -7,7 +7,7 @@
 <%@page import="java.util.*" %>
 <html class="no-js">
     <head>
-        <title>运动员营养学科</title>
+        <title>运动员康复学科</title>
              <meta charset=UTF-8>
         <!-- Bootstrap -->
         <script
@@ -37,7 +37,7 @@
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">营养学科教练</a>
+                    <a class="brand" href="#">康复学科教练</a>
 					<div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">
@@ -54,8 +54,8 @@
 					</div>
 					 <div>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="./NutriologyCoach.jsp">运动员管理</a></li>
-							<li ><a href="./athleteNReport.jsp">运动员分析报告</a></li>	
+							<li class="active"><a href="./RehabilitationCoach.jsp">运动员管理</a></li>
+							<li ><a href="./athleteRReport.jsp">运动员分析报告</a></li>	
 						</ul>
 					</div>
 				</div>
@@ -74,13 +74,11 @@
 									<%String id=request.getParameter("id");
 									System.out.println("id是"+id);
 									%>
-									<form class="navbar-form navbar-right" action="./athleteNOneDay?id=<%=id %>" method="post">	
+									<form class="navbar-form navbar-right" action="./athleteROneDay?id=<%=id %>" method="post">	
                                 	<input type="date" id="searchdate"class="form-control" name="date1">
 									<button class="btn btn-default" type="submit">查找日期</button>
 									</form>
 									</div>		<!--  结束时间输入输出框 -->
-		
-									
 									<div class="btn-group pull-left">   
                                         <a data-toggle="modal" href="#addathlete"><button class="btn btn-success">录入 <i class="icon-plus icon-white"></i></button></a>
 									</div></div>
@@ -89,30 +87,29 @@
 						              <thead bgcolor="#afeeee">
 						              <tr class="info"></tr>
 						                <tr style="text-align: center">
-						                  <th onclick="$.sortTable.sort('tableSort',0)" style="cursor: pointer;">训练时间</th>
-						                  <th onclick="$.sortTable.sort('tableSort',1)" style="cursor: pointer;">ID</th>						                  
-						                  <th onclick="$.sortTable.sort('tableSort',2)" style="cursor: pointer;">姓名</th>
-										  <th onclick="$.sortTable.sort('tableSort',3)" style="cursor: pointer;">年龄</th>
-										  <th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">速度km/m</th>
-										  <th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">糖类摄入量/g</th>
-										  <th onclick="$.sortTable.sort('tableSort',6)" style="cursor: pointer;">蛋白质摄入量/g</th>
-										  <th onclick="$.sortTable.sort('tableSort',7)" style="cursor: pointer;">脂肪摄入量/g</th>
-										  <th onclick="$.sortTable.sort('tableSort',8)" style="cursor: pointer;">矿物盐和水/ml</th>
-										  <th onclick="$.sortTable.sort('tableSort',9)" style="cursor: pointer;">血糖含量mmol/L</th>
-										  <th onclick="$.sortTable.sort('tableSort',10)" style="cursor: pointer;">视黄醇结合蛋白mg/l</th>
-										  <th onclick="$.sortTable.sort('tableSort',11)" style="cursor: pointer;">营养日摄入量/千卡</th>
+						                  <th onclick="$.sortTable.sort('tableSort',0)" style="cursor: pointer;">时间</th>
+											<th onclick="$.sortTable.sort('tableSort',1)" style="cursor: pointer;">ID</th>
+											<th onclick="$.sortTable.sort('tableSort',2)" style="cursor: pointer;">姓名</th>
+											<th onclick="$.sortTable.sort('tableSort',3)" style="cursor: pointer;">年龄</th>
+											<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">平均速度(Km/min)</th>
+											<th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">血红蛋白(g/dl)</th>
+											<th onclick="$.sortTable.sort('tableSort',6)" style="cursor: pointer;">血清睾酮(nmol/L)</th>
+											<th onclick="$.sortTable.sort('tableSort',7)" style="cursor: pointer;">血清肌酸激酶(U/L)</th>
+											<th onclick="$.sortTable.sort('tableSort',8)" style="cursor: pointer;">精氨酸摄入量(g)</th>
+											<th onclick="$.sortTable.sort('tableSort',9)" style="cursor: pointer;">酪氨酸摄入量(g)</th>
+											<th onclick="$.sortTable.sort('tableSort',10)" style="cursor: pointer;">训练当天睡眠时间(h)</th>
+											<th onclick="$.sortTable.sort('tableSort',11)" style="cursor: pointer;">伤痛关节冰敷时间(min)</th>
+											<th onclick="$.sortTable.sort('tableSort',12)" style="cursor: pointer;">肌肉推拿康复时间(min)</th>
 										  <th></th>
 						                </tr>
 						              </thead>
 						              <tbody>						             
 						                <tr >
 	                <%
-	                	
    	                	System.out.println("该运动员id是"+id);
    	                	String date=request.getParameter("date");
-   	                	
-     	                NTableDao nTableDao=new NTableDao();
-     	                List<Object[]> o=nTableDao.getNTableByDate(id, date);
+     	                RTableDao rTableDao=new RTableDao();
+     	                List<Object[]> o=rTableDao.getRTableByDate(id, date);
      	                if(o!=null){
      	                for(Object[] list:o)
      	                {
@@ -129,6 +126,7 @@
 						  <td><%=list[9] %></td>	
 						  <td><%=list[10] %></td>	
 						  <td><%=list[11] %></td>	
+						  <td><%=list[12] %></td>
 						  <td>
 						 
 											<div class="btn-group">
@@ -141,7 +139,7 @@
 														<a data-toggle="modal" href="#changeathlete">修改</a>
 													</li>
 													<li class="divider"></li>
-													<li><a href="./deleteCyclist?nid=<%=list[12] %>&id=<%=list[1] %>">删除</a></li>												
+													<li><a href="./deleteRCyclist?rid=<%=list[13] %>&id=<%=list[1] %>">删除</a></li>												
 												</ul>
 											</div>	
 										  </td>
@@ -213,18 +211,28 @@
 						<h4 class="modal-title" id="myModalLabel">
 					增加运动信息
 				</h4>
-				<form class="form-horizontal" action="./addOneAthMsg?cid=<%=id %>" method="post">
+				<form class="form-horizontal" action="./addOneRAthMsg?cid=<%=id %>" method="post">
 				<div class="modal-body">
-					<div class="control-group"><label class="control-label" for="input01">训练时间</label><div class="controls"> <input type="date"  id="searchdate"class="form-control" name="date"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">运动成绩</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="speed"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">白细胞数</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="wbc"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">红细胞数</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="rbc"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">血红蛋白</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="hgb"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">红细胞压积</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="hct"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">红细胞平均体积</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="mcv"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">红细胞平均含量</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="hgb_rbc"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">平均红细胞血红蛋白浓度</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="mchc"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">血小板计数</label><div class="controls"> <input type="text" placeholder="placeholder" class="input-xlarge" name="plt"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">训练时间</label><div class="controls"> 
+					<input type="date"  required="requered" class="form-control" name="date"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">血红蛋白(g/dl)</label><div class="controls"> 
+					<input type="text" required="requered"  class="input-xlarge" name="hgb"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">血清睾酮(nmol/L)</label><div class="controls"> 
+					<input type="text" required="requered"  class="input-xlarge" name="sttt"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">血清肌酸激酶(U/L)</label><div class="controls"> 
+					<input type="text" required="requered" class="input-xlarge" name="ck"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">精氨酸摄入量(g)</label><div class="controls"> 
+					<input type="text" required="requered"  class="input-xlarge" name="arg"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">酪氨酸摄入量(g)</label><div class="controls"> 
+					<input type="text" required="requered"  class="input-xlarge" name="tyr"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">训练当天睡眠时间(h)</label><div class="controls"> 
+					<input type="text" required="requered"  class="input-xlarge" name="sleep"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">伤痛关节冰敷时间(min)</label><div class="controls"> 
+					<input type="text" required="requered"  class="input-xlarge" name="ice"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">肌肉推拿康复时间(min)</label><div class="controls"> 
+					<input type="text" required="requered"  class="input-xlarge" name="msg"> </div></div>
+					<div class="control-group"><label class="control-label" for="input01">速度(km/m)</label><div class="controls"> 
+					<input type="text" required="requered"  class="input-xlarge" name="speed"> </div></div>
 				</div>
 				<!--表单到此结束。，点击提交把表单上传即可-->
 				<div class="modal-footer">

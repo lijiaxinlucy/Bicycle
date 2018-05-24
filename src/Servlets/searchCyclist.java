@@ -49,7 +49,7 @@ public class searchCyclist extends HttpServlet {
 		if(flagParam.equals("areaID")){
 			CyclistsDao cyclistsDao=new CyclistsDao();
 			Cyclists cyclist=new Cyclists();
-			cyclist=cyclistsDao.selectCyclistByCid(realParam);
+			//cyclist=cyclistsDao.selectCyclistByCid(realParam);
 			System.out.println(cyclist.getCName());
 			response.sendRedirect("./selectById.jsp?id="+flagParam);
 		}

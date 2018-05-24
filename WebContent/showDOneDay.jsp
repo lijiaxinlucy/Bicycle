@@ -35,7 +35,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="#">力学学科教练</a>
+					<a class="brand">力学学科教练</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav pull-right">
 							<li class="dropdown">
@@ -56,7 +56,7 @@
 								<a href="./DynamicsCoach.jsp" id="gardCyclist">运动员管理</a>
 							</li>
 							<li>
-								<a href="./showReports">运动员分析报告</a>
+								<a>运动员分析报告</a>
 							</li>
 						</ul>
 					</div>
@@ -66,7 +66,13 @@
 					<div class="block">
 						<div class="navbar navbar-inner block-header">
 							<div class="muted pull-left">运动员信息</div>
+							<div  class="muted pull-right" style="color:red">红:高&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							<div  class="muted pull-right" style="color:black">黑:普通&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							<div  class="muted pull-right" style="color:#28FF28">绿:较低&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							<div  class="muted pull-right" style="color:#0000C6">蓝:低&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							
 						</div>
+						
 						<div class="block-content collapse in">
 							<div class="span12">
 								<div class="btn-group pull-right">
@@ -85,7 +91,12 @@
 									</form>
 								</div>
 								<div class="btn-group pull-left">
-									<input type="file" value="dd">
+								<form  action="./insertData" method="post" enctype="multipart/form-data">
+									<input  class="form-control" type="file" id="id1" name="name1" value="选择文件">
+									 <input  type="submit" class="btn btn-default">批量添加 
+									<i class="icon-plus icon-white"></i>
+									
+								</form>
 								</div>
 								
 								<div class="btn-group pull-left"> 
@@ -94,53 +105,52 @@
 										<div class="input-group">
 											<input type="date" id="startdate" class="form-control" width=2px name="date">
 											<button class="btn btn-default" type="submit">查找日期</button>
+											
 										</div>
 									</form>
 								</div>
-								<table class="table" style=" margin-bottom: 80px;"  summary="user infomation table" id="tableSort">
-									<thead bgcolor="#afeeee">
-										<tr>
-											<th onclick="$.sortTable.sort('tableSort',0)" style="cursor: pointer;">ID</th>
-											<th onclick="$.sortTable.sort('tableSort',1)" style="cursor: pointer;">姓名</th>
-											<th onclick="$.sortTable.sort('tableSort',2)" style="cursor: pointer;">性别</th>
-											<th onclick="$.sortTable.sort('tableSort',3)" style="cursor: pointer;">身高</th>
-											<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">体重</th>
-											<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">年龄</th>
-											<th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">时间</th>
-											<th onclick="$.sortTable.sort('tableSort',6)" style="cursor: pointer;">白细胞数</th>
-											<th onclick="$.sortTable.sort('tableSort',7)" style="cursor: pointer;">红细胞数</th>
-											<th onclick="$.sortTable.sort('tableSort',8)" style="cursor: pointer;">血红蛋白</th>
-											<th onclick="$.sortTable.sort('tableSort',9)" style="cursor: pointer;">红细胞压积</th>
-											<th onclick="$.sortTable.sort('tableSort',10)" style="cursor: pointer;">红细胞平均体积</th>
-											<th onclick="$.sortTable.sort('tableSort',11)" style="cursor: pointer;">红细胞平均含量</th>
-											<th onclick="$.sortTable.sort('tableSort',12)" style="cursor: pointer;">平均红细胞血红蛋白浓度</th>
-											<th onclick="$.sortTable.sort('tableSort',13)" style="cursor: pointer;">血小板计数</th>
-										</tr>
-									</thead>
+								&nbsp; &nbsp; &nbsp;
+								<button type="button" class="btn btn-default" data-toggle="modal"  href="#athletegraph1" >运动员-速度柱状图</button>
+								<table class="table" style="  margin-bottom: 80px;"  summary="user infomation table" id="tableSort">
+								<thead bgcolor="#afeeee">
+								<tr>
+								<th onclick="$.sortTable.sort('tableSort',0)" style="cursor: pointer;">ID</th>
+								<th onclick="$.sortTable.sort('tableSort',1)" style="cursor: pointer;">姓名</th>
+								<th onclick="$.sortTable.sort('tableSort',2)" style="cursor: pointer;">年龄</th>
+								<th onclick="$.sortTable.sort('tableSort',3)" style="cursor: pointer;">时间</th>
+								<th onclick="$.sortTable.sort('tableSort',4)" style="cursor: pointer;">质量(kg)</th>
+								<th onclick="$.sortTable.sort('tableSort',5)" style="cursor: pointer;">空气密度(kg/m3)</th>
+								<th onclick="$.sortTable.sort('tableSort',6)" style="cursor: pointer;">俯身角度(度)</th>
+								<th onclick="$.sortTable.sort('tableSort',7)" style="cursor: pointer;">迎风面积(m2)</th>
+								<th onclick="$.sortTable.sort('tableSort',8)" style="cursor: pointer;">滚动摩擦力(N)</th>
+								<th onclick="$.sortTable.sort('tableSort',9)" style="cursor: pointer;">身高/座高</th>
+								<th onclick="$.sortTable.sort('tableSort',10)" style="cursor: pointer;">风阻(N)</th>
+								<th onclick="$.sortTable.sort('tableSort',11)" style="cursor: pointer;">速度km/m</th>
+								</tr>
+								</thead>
 									<tbody>
 										<tr >
 					<% 
-					String punString=request.getParameter("date");
+					String date=request.getParameter("date");
+					System.out.println(date);
 					DTableDao dTableDao=new DTableDao();
-					List<Object[]> result=dTableDao.getDTable(punString);
+					List<Object[]> result=dTableDao.getDTable(date);
+					System.out.println(result.size());
 					if(result!=null){
 					for(Object[] obj: result ){
 					%>
 											<td><a href="./Dynamicsathlete.jsp?id=<%=obj[0] %>"><%=obj[0] %></a></td>
-											<td><a href="./Dynamicsathlete.jsp?id=<%=obj[0] %>"><%=obj[1] %></a></td>
+											<td ><a class="name11" href="./Dynamicsathlete.jsp?id=<%=obj[0] %>"><%=obj[1] %></a></td>
 											<td><%=obj[2] %></td>
 											<td><%=obj[3] %></td>
-											<td><%=obj[4] %></td>
+											<td class="suger11"><%=obj[4] %></td>
 											<td><%=obj[5] %></td>
 											<td><%=obj[6] %></td>
-											<td><%=obj[7] %></td>
+											<td class="salt11"><%=obj[7] %></td>
 											<td><%=obj[8] %></td>
 											<td><%=obj[9] %></td>
-											<td><%=obj[10] %></td>
-											<td><%=obj[11] %></td>
-											<td><%=obj[12] %></td>
-											<td><%=obj[13] %></td>
-											<td><%=obj[14] %></td>
+											<td class="energy11"><%=obj[10] %></td>
+											<td class="speed11"><%=obj[11] %></td>
 										</tr>
 										<%}
 					}
@@ -155,10 +165,71 @@
 				</div>
 			</div>
 		</div>
-		<script src="vendors/jquery-1.9.1.min.js"></script>
-		<script src="bootstrap/js/bootstrap.min.js"></script>
-		<script src="vendors/easypiechart/jquery.easy-pie-chart.js"></script>
-		<script src="assets/scripts.js"></script>
+		<script type="text/javascript">
+		var speed11 =   document.getElementsByClassName("speed11");
+		var suger11 =   document.getElementsByClassName("suger11");
+		var energy11=   document.getElementsByClassName("energy11");
+		var salt11=   document.getElementsByClassName("salt11");
+		for(i=0;i<speed11.length;i++){
+			if(speed11[i].innerHTML<0.64){
+				speed11[i].style.color='#0000C6';
+			}
+			else
+				if(speed11[i].innerHTML<0.72){
+					speed11[i].style.color='#28FF28';
+					
+				}
+				else
+					if(speed11[i].innerHTML>0.79){
+						speed11[i].style.color='red';
+						
+					}
+			
+		}
+		for(i=0;i<energy11.length;i++){
+			if(energy11[i].innerHTML<3375){
+				energy11[i].style.color='#0000C6';
+			}
+			else
+				if(energy11[i].innerHTML<4450){
+					energy11[i].style.color='#28FF28';
+					
+				}
+				else
+					if(energy11[i].innerHTML>5125){
+						energy11[i].style.color='red';
+						
+					}
+			
+		}
+		for(i=0;i<suger11.length;i++){
+			if(suger11[i].innerHTML<566){
+				suger11[i].style.color='#0000C6';
+			}
+			else
+				if(suger11[i].innerHTML>682){
+					suger11[i].style.color='red';
+					
+				}
+			
+		}
+		for(i=0;i<salt11.length;i++){
+			if(salt11[i].innerHTML<400){
+				salt11[i].style.color='#0000C6';
+			}
+			else
+				if(salt11[i].innerHTML>600){
+					salt11[i].style.color='red';
+					
+				}
+			
+		}
+		</script>
+				<script src="vendors/jquery-1.9.1.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendors/easypiechart/jquery.easy-pie-chart.js"></script>
+        <script src="assets/scripts.js"></script>
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 		<script>
 		(function($){
 		    //插件
@@ -198,5 +269,69 @@
 		    });      
 		})(jQuery);
 	</script>
+	<!-- 图表 -->
+		<div class="modal fade" id="athletegraph1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" overflow="auto" style="display:none">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">运动员图表</h4>
+						<div class="modal-body">
+						<div id="chartContainer1" style="height: 370px;"></div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- 图表到此结束 -->
+		<script>
+
+		window.onload = function () {
+			
+
+			var speed11 =   document.getElementsByClassName("speed11");
+			var name11=   document.getElementsByClassName("name11");
+			var chart1arr1= new Array();
+			for(j=0;j<speed11.length;j++){
+				chart1arr1[j]=speed11[j].innerHTML;
+			}
+			var chart1arr2= new Array();
+			for(j=0;j<name11.length;j++){
+				chart1arr2[j]=name11[j].innerHTML;
+			}
+			var chart = new CanvasJS.Chart("chartContainer1", {
+				animationEnabled: true,
+				theme: "light2", // "light1", "light2", "dark1", "dark2"
+				title:{
+					text: "运动员-速度柱状图"
+				},
+				axisY: {
+					title: "速度"
+				},
+				data: [{        
+					type: "column",  
+					//showInLegend: true, 
+					legendMarkerColor: "grey",
+					//legendText: "运动员-速度柱状图",
+					dataPoints: [      
+						{ y: chart1arr1[0]/1,  label: chart1arr2[0] },
+						{ y: chart1arr1[1]/1,  label: chart1arr2[1] },
+						{ y: chart1arr1[2]/1,  label: chart1arr2[2] },
+						{ y: chart1arr1[3]/1,  label: chart1arr2[3] },
+						{ y: chart1arr1[4]/1,  label: chart1arr2[4] },
+						{ y: chart1arr1[5]/1,  label: chart1arr2[5] },
+						{ y: chart1arr1[6]/1,  label: chart1arr2[6] },
+						{ y: chart1arr1[7]/1,  label: chart1arr2[7] },
+						{ y: chart1arr1[8]/1,  label: chart1arr2[8] },
+						{ y: chart1arr1[9]/1,  label: chart1arr2[9] }
+						
+						
+					]
+				}]
+			});
+			chart.render();
+		}
+		</script>
 	</body>
 </html>

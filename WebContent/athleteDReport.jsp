@@ -53,24 +53,27 @@
 					//exportEnabled: true,
 					theme: "light2", // "light1", "light2", "dark1", "dark2"
 					title: {
-						text: "糖摄入量与血糖含量折线图"
+						text: "质量与滚动摩擦力折线图"
 					},
+					 axisY:{
+						   minimum: 8,
+						 },
 					data: [{
 						type: "line", //change type to bar, line, area, pie, etc
-						//indexLabel: "{y}", //Shows y value on all Data Points
+						indexLabel: "{y}", //Shows y value on all Data Points
 						indexLabelFontColor: "#5A5757",
 						indexLabelPlacement: "outside",
 						dataPoints: [
-							{x:	620 	,y:	8.935 	},
-							{x:	640 	,y:	8.92 	},
-							{x:	660 	,y:	9.23 	},
-							{x:	680 	,y:	9.31 	},
-							{x:	700 	,y:	9.53 	},
-							{x:	720 	,y:	9.76 	},
-							{x:	740 	,y:	9.88 	},
-							{x:	760 	,y:	10.33 	},
-							{x:	780 	,y:	10.53 	},
-							{x:	800 	,y:	10.69 	},
+							{x:	71	,y:	10.62 	},
+							{x:	72	,y:	10.747	},
+							{x:	73	,y:	10.897	},
+							{x:	74	,y:	11.04	},
+							{x:	75	,y:	11.14	},
+							{x:	76	,y:	11.345	},
+							{x:	77	,y:	11.5	},
+							{x:	78	,y:	11.63	},
+							{x:	79	,y:	11.81	},
+							{x:	80	,y:	11.94	},
 
 
 
@@ -84,7 +87,10 @@
 					//exportEnabled: true,
 					theme: "light2", // "light1", "light2", "dark1", "dark2"
 					title: {
-						text: "蛋白质与视黄醇结合蛋白折线图"
+						text: "滚动摩擦力与速度折线图"
+					},
+					axisY:{
+						   minimum: 0.5,
 					},
 					data: [{
 						type: "line", //change type to bar, line, area, pie, etc
@@ -92,16 +98,16 @@
 						indexLabelFontColor: "#5A5757",
 						indexLabelPlacement: "outside",
 						dataPoints: [
-							{x:	65 	,y:	48.25 	},
-							{x:	80 	,y:	50.55 	},
-							{x:	95 	,y:	53.12 	},
-							{x:	110 ,y:	53.51 	},
-							{x:	125 ,y:	53.44 	},
-							{x:	140 ,y:	49.78 	},
-							{x:	155 ,y:	49.63 	},
-							{x:	170 ,y:	51.62 	},
-							{x:	185 ,y:	51.48 	},
-							{x:	200 ,y:	50.32 	},
+							{x:	10.65	,y:	0.820 	},
+							{x:	10.80 	,y:	0.810 	},
+							{x:	10.95	,y:	0.790 	},
+							{x:	11.1	,y:	0.784 	},
+							{x:	11.25	,y:	0.786 	},
+							{x:	11.4	,y:	0.768 	},
+							{x:	11.55	,y:	0.755 	},
+							{x:	11.7	,y:	0.749 	},
+							{x:	11.85	,y:	0.742 	},
+							{x:	12		,y:	0.730 	},
 
 
 
@@ -113,38 +119,7 @@
 					animationEnabled: true,
 					theme: "light2", // "light1", "light2", "dark1", "dark2"
 					title:{
-						text: "脂肪摄入量-营养柱状图"
-					},
-					axisY: {
-						title: "平均营养"
-					},
-					data: [{        
-						type: "column",  
-						//showInLegend: true, 
-						legendMarkerColor: "grey",
-						dataPoints: [      
-							{x:	110 	,y:	4445.00 	},
-							{x:	120 	,y:	4550.00 	},
-							{x:	130 	,y:	4583.00 	},
-							{x:	140 	,y:	4671.00 	},
-							{x:	150 	,y:	5032.00 	},
-							{x:	160 	,y:	4871.00 	},
-							{x:	170 	,y:	4956.00 	},
-							{x:	180 	,y:	5135.00 	},
-							{x:	190 	,y:	4962.00 	},
-							{x:	200 	,y:	5247.00 	},
-
-							
-							
-						]
-					}]
-				});
-				chart.render();
-				var chart = new CanvasJS.Chart("chartContainer4", {
-					animationEnabled: true,
-					theme: "light2", // "light1", "light2", "dark1", "dark2"
-					title:{
-						text: "营养日摄入量-速度柱状图"
+						text: "迎风面积-风阻柱状图"
 					},
 					axisY: {
 						title: "平均速度"
@@ -155,16 +130,34 @@
 						legendMarkerColor: "grey",
 						//legendText: "运动员-速度柱状图",
 						dataPoints: [      
-							{x:	4350 	,y:	0.740 	},
-							{x:	4500 	,y:	0.746 	},
-							{x:	4650 	,y:	0.762 	},
-							{x:	4800 	,y:	0.752 	},
-							{x:	4950 	,y:	0.768 	},
-							{x:	5100 	,y:	0.766 	},
-							{x:	5250 	,y:	0.793 	},
-							{x:	5400 	,y:	0.797 	},
-							{x:	5550 	,y:	0.807 	},
-							{x:	5700 	,y:	0.800 	},
+							{ y: 7.94,  label: "迎风面积0.45" },
+							{ y: 10.13,  label: "迎风面积0.55" },
+							{ y: 11.76,  label: "迎风面积0.65" },														
+						]
+					}]
+				});
+				chart.render();
+				var chart = new CanvasJS.Chart("chartContainer4", {
+					animationEnabled: true,
+					theme: "light2", // "light1", "light2", "dark1", "dark2"
+					title:{
+						text: "速度-风阻柱状图"
+					},
+					axisY: {
+						title: "平均风阻"
+					},
+					data: [{        
+						type: "column",  
+						//showInLegend: true, 
+						legendMarkerColor: "grey",
+						dataPoints: [      
+							{x:	0.730 	,y:	9.69 	},
+							{x:	0.750 	,y:	9.417	},
+							{x:	0.770 	,y:	10		},
+							{x:	0.790 	,y:	10.77	},
+							{x:	0.810 	,y:	11.27	},
+							{x:	0.830 	,y:	11.9	},
+							{x:	0.850 	,y:	13.863	},
 
 							
 							
@@ -183,7 +176,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="./NutriologyCoach.jsp">营养学科教练</a>
+					<a class="brand" href="./DynamicsCoach.jsp">力学学科教练主页</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav pull-right">
 							<li class="dropdown">
@@ -201,10 +194,10 @@
 					<div>
 						<ul class="nav navbar-nav">
 							<li class="active">
-								<a href="./NutriologyCoach.jsp">运动员管理</a>
+								<a href="./DynamicsCoach.jsp">运动员管理</a>
 							</li>
 							<li>
-								<a>运动员营养学分析报告</a>
+								<a>运动员力学分析报告</a>
 							</li>
 						</ul>
 					</div>

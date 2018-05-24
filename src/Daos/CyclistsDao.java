@@ -41,9 +41,10 @@ public class CyclistsDao {
 		query.setString("cid", cid);
 		List<Cyclists> obj=query.list();
 		//return (Cyclists) obj;
-		if(obj!=null && !obj.isEmpty())
-			return obj.get(0);
-		else return null;
+		//if(obj!=null && !obj.isEmpty())
+			//return obj.get(0);
+		//else return null;
+		return null;
 		
 	}
 	public static List<Cyclists> selectCyclistsByCName(String CName){//通过cname找到所有的运动员（可能重名）

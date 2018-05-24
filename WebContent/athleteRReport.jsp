@@ -53,7 +53,7 @@
 					//exportEnabled: true,
 					theme: "light2", // "light1", "light2", "dark1", "dark2"
 					title: {
-						text: "糖摄入量与血糖含量折线图"
+						text: "睡眠时间与血清睾酮折线图"
 					},
 					data: [{
 						type: "line", //change type to bar, line, area, pie, etc
@@ -61,17 +61,14 @@
 						indexLabelFontColor: "#5A5757",
 						indexLabelPlacement: "outside",
 						dataPoints: [
-							{x:	620 	,y:	8.935 	},
-							{x:	640 	,y:	8.92 	},
-							{x:	660 	,y:	9.23 	},
-							{x:	680 	,y:	9.31 	},
-							{x:	700 	,y:	9.53 	},
-							{x:	720 	,y:	9.76 	},
-							{x:	740 	,y:	9.88 	},
-							{x:	760 	,y:	10.33 	},
-							{x:	780 	,y:	10.53 	},
-							{x:	800 	,y:	10.69 	},
-
+							{x:	6.5 	,y:	15.61 	},
+							{x:	7.0 	,y:	20.11 	},
+							{x:	7.5 	,y:	22.79 	},
+							{x:	8.0 	,y:	24.73 	},
+							{x:	8.5 	,y:	25.22 	},
+							{x:	9.0 	,y:	24.67 	},
+							{x:	9.5 	,y:	22.64 	},
+							{x:	10.0 	,y:	20.16 	},
 
 
 
@@ -84,25 +81,28 @@
 					//exportEnabled: true,
 					theme: "light2", // "light1", "light2", "dark1", "dark2"
 					title: {
-						text: "蛋白质与视黄醇结合蛋白折线图"
+						text: "血清睾酮与速度折线图"
 					},
+					axisY:{
+						   minimum: 0.5,
+						 },
 					data: [{
 						type: "line", //change type to bar, line, area, pie, etc
 						//indexLabel: "{y}", //Shows y value on all Data Points
 						indexLabelFontColor: "#5A5757",
 						indexLabelPlacement: "outside",
 						dataPoints: [
-							{x:	65 	,y:	48.25 	},
-							{x:	80 	,y:	50.55 	},
-							{x:	95 	,y:	53.12 	},
-							{x:	110 ,y:	53.51 	},
-							{x:	125 ,y:	53.44 	},
-							{x:	140 ,y:	49.78 	},
-							{x:	155 ,y:	49.63 	},
-							{x:	170 ,y:	51.62 	},
-							{x:	185 ,y:	51.48 	},
-							{x:	200 ,y:	50.32 	},
-
+							{x:	14 	,y:	0.714 	},
+							{x:	15 	,y:	0.721 	},
+							{x:	17 	,y:	0.732 	},
+							{x:	18 	,y:	0.740 	},
+							{x:	19 	,y:	0.736 	},
+							{x:	20 	,y:	0.740 	},
+							{x:	21 	,y:	0.760 	},
+							{x:	22 	,y:	0.768 	},
+							{x:	23 	,y:	0.770 	},
+							{x:	24 	,y:	0.793 	},
+							{x:	25 	,y:	0.795 	},
 
 
 						]
@@ -113,38 +113,7 @@
 					animationEnabled: true,
 					theme: "light2", // "light1", "light2", "dark1", "dark2"
 					title:{
-						text: "脂肪摄入量-营养柱状图"
-					},
-					axisY: {
-						title: "平均营养"
-					},
-					data: [{        
-						type: "column",  
-						//showInLegend: true, 
-						legendMarkerColor: "grey",
-						dataPoints: [      
-							{x:	110 	,y:	4445.00 	},
-							{x:	120 	,y:	4550.00 	},
-							{x:	130 	,y:	4583.00 	},
-							{x:	140 	,y:	4671.00 	},
-							{x:	150 	,y:	5032.00 	},
-							{x:	160 	,y:	4871.00 	},
-							{x:	170 	,y:	4956.00 	},
-							{x:	180 	,y:	5135.00 	},
-							{x:	190 	,y:	4962.00 	},
-							{x:	200 	,y:	5247.00 	},
-
-							
-							
-						]
-					}]
-				});
-				chart.render();
-				var chart = new CanvasJS.Chart("chartContainer4", {
-					animationEnabled: true,
-					theme: "light2", // "light1", "light2", "dark1", "dark2"
-					title:{
-						text: "营养日摄入量-速度柱状图"
+						text: "冰敷时间-速度柱状图"
 					},
 					axisY: {
 						title: "平均速度"
@@ -155,17 +124,35 @@
 						legendMarkerColor: "grey",
 						//legendText: "运动员-速度柱状图",
 						dataPoints: [      
-							{x:	4350 	,y:	0.740 	},
-							{x:	4500 	,y:	0.746 	},
-							{x:	4650 	,y:	0.762 	},
-							{x:	4800 	,y:	0.752 	},
-							{x:	4950 	,y:	0.768 	},
-							{x:	5100 	,y:	0.766 	},
-							{x:	5250 	,y:	0.793 	},
-							{x:	5400 	,y:	0.797 	},
-							{x:	5550 	,y:	0.807 	},
-							{x:	5700 	,y:	0.800 	},
-
+							{ y: 0.754,  label: "冰敷时间<=10" },
+							{ y: 0.771,  label: "冰敷时间11-15" },
+							{ y: 0.786,  label: "冰敷时间16-20" },
+							{ y: 0.757,  label: "冰敷时间>20" },
+							
+							
+						]
+					}]
+				});
+				chart.render();
+				var chart = new CanvasJS.Chart("chartContainer4", {
+					animationEnabled: true,
+					theme: "light2", // "light1", "light2", "dark1", "dark2"
+					title:{
+						text: "肌肉推拿时间-速度柱状图"
+					},
+					axisY: {
+						title: "平均速度"
+					},
+					data: [{        
+						type: "column",  
+						//showInLegend: true, 
+						legendMarkerColor: "grey",
+						//legendText: "运动员-速度柱状图",
+						dataPoints: [      
+							{ y: 0.745,  label: "肌肉推拿时间<=10" },
+							{ y: 0.752,  label: "肌肉推拿时间11-15" },
+							{ y: 0.779,  label: "肌肉推拿时间16-20" },
+							{ y: 0.782,  label: "肌肉推拿时间21-25" },
 							
 							
 						]
@@ -183,7 +170,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="./NutriologyCoach.jsp">营养学科教练</a>
+					<a class="brand" href="./RehabilitationCoach.jsp">康复学科教练主页</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav pull-right">
 							<li class="dropdown">
@@ -201,10 +188,10 @@
 					<div>
 						<ul class="nav navbar-nav">
 							<li class="active">
-								<a href="./NutriologyCoach.jsp">运动员管理</a>
+								<a href="./RehabilitationCoach.jsp">运动员管理</a>
 							</li>
 							<li>
-								<a>运动员营养学分析报告</a>
+								<a>运动员康复学分析报告</a>
 							</li>
 						</ul>
 					</div>
