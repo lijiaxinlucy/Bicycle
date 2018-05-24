@@ -274,20 +274,20 @@
 							<caption style="margin-bottom:20px;font-size: 25px">运动员BP神经网络成绩预测</caption>
 							<thead>
 								<tr>
-									<th>质量</th>
-									<th>俯身角度</th>
-									<th>空气密度</th>
-									<th>风阻</th>
+									<th>糖类摄入量</th>
+									<th>蛋白质摄入量</th>
+									<th>脂肪摄入量</th>
+									<th>无机盐摄入量</th>
 									<th>预测速度</th>
 									<th></th>
 								</tr>
 							</thead>
 							<tbody>
 									<tr>
-										<td><input id="zhiliang" name="zhiliang" placeholder="输入质量的大小" style="border:0px;border-bottom:#000000 1px solid;" /></td>
-										<td><input id="jiaodu" name="jiaodu" placeholder="输入俯身角度的大小" style="border:0px;border-bottom:#000000 1px solid;" /></td>
-										<td><input id="midu" name="midu" placeholder="输入空气密度的大小" style="border:0px;border-bottom:#000000 1px solid;" /></td>
-										<td><input id="fengzu" name="fengzu" placeholder="输入风阻的大小" style="border:0px;border-bottom:#000000 1px solid;" /></td>
+										<td><input id="zhiliang" name="zhiliang" placeholder="输入糖类摄入量" style="border:0px;border-bottom:#000000 1px solid;" /></td>
+										<td><input id="jiaodu" name="jiaodu" placeholder="输入蛋白质摄入量" style="border:0px;border-bottom:#000000 1px solid;" /></td>
+										<td><input id="midu" name="midu" placeholder="输入脂肪摄入量" style="border:0px;border-bottom:#000000 1px solid;" /></td>
+										<td><input id="fengzu" name="fengzu" placeholder="输入无机盐摄入量" style="border:0px;border-bottom:#000000 1px solid;" /></td>
 										<td><input id="predict" style="border:0px;border-bottom:#000000 1px solid;" /></td>
 										<td><button class="btn btn-primary" value="预测" onclick="requestPredict(event)">预测</button></td>
 									</tr>

@@ -91,7 +91,7 @@
 									</form>
 								</div>
 								<div class="btn-group pull-left">
-								<form  action="./insertData" method="post" enctype="multipart/form-data">
+								<form  action="./insertDData" method="post" enctype="multipart/form-data">
 									<input  class="form-control" type="file" id="id1" name="name1" value="选择文件">
 									 <input  type="submit" class="btn btn-default">批量添加 
 									<i class="icon-plus icon-white"></i>

@@ -39,7 +39,7 @@
 				fengzu = $("#fengzu").val()
 				data = {"zhiliang":zhiliang,"jiaodu":jiaodu,
 					"midu":midu,"fengzu":fengzu}
-			  	htmlobj=$.ajax({type:'POST',url:"./predict",data:data,success:function(resp){
+			  	htmlobj=$.ajax({type:'POST',url:"./predictD",data:data,success:function(resp){
 				  console.log("return2 :"+resp)
 			  		//$("#predict").value =resp;
 				  document.getElementById("predict").value =resp;
@@ -221,7 +221,7 @@
 							 <tbody>
 							<%
 								FirstJythonScript firstJythonScript = new FirstJythonScript();
-								String s = firstJythonScript.getMsg();
+								String s = firstJythonScript.getDMsg();
 								String[] lines = s.split("\r");
 								int i =0;
 								for (String ss : lines) {//一行数据

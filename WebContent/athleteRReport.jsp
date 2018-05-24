@@ -37,9 +37,12 @@
 				jiaodu = $("#jiaodu").val()
 				midu = $("#midu").val()
 				fengzu = $("#fengzu").val()
+				tuina= $("#tuina").val()
+				
 				data = {"zhiliang":zhiliang,"jiaodu":jiaodu,
-					"midu":midu,"fengzu":fengzu}
-			  	htmlobj=$.ajax({type:'POST',url:"./predict",data:data,success:function(resp){
+					"midu":midu,"fengzu":fengzu,"tuina":tuina}
+				
+			  	htmlobj=$.ajax({type:'POST',url:"./predictR",data:data,success:function(resp){
 				  console.log("return2 :"+resp)
 			  		//$("#predict").value =resp;
 				  document.getElementById("predict").value =resp;
@@ -215,7 +218,7 @@
 							 <tbody>
 							<%
 								FirstJythonScript firstJythonScript = new FirstJythonScript();
-								String s = firstJythonScript.getMsg();
+								String s = firstJythonScript.getRMsg();
 								String[] lines = s.split("\r");
 								int i =0;
 								for (String ss : lines) {//一行数据
@@ -261,20 +264,22 @@
 							<caption style="margin-bottom:20px;font-size: 25px">运动员BP神经网络成绩预测</caption>
 							<thead>
 								<tr>
-									<th>质量</th>
-									<th>俯身角度</th>
-									<th>空气密度</th>
-									<th>风阻</th>
+									<th>精氨酸摄入量</th>
+									<th>酪氨酸摄入量</th>
+									<th>睡眠时间</th>
+									<th>冰敷时间</th>
+									<th>肌肉推拿康复时间</th>
 									<th>预测速度</th>
 									<th></th>
 								</tr>
 							</thead>
 							<tbody>
 									<tr>
-										<td><input id="zhiliang" name="zhiliang" placeholder="输入质量的大小" style="border:0px;border-bottom:#000000 1px solid;" /></td>
-										<td><input id="jiaodu" name="jiaodu" placeholder="输入俯身角度的大小" style="border:0px;border-bottom:#000000 1px solid;" /></td>
-										<td><input id="midu" name="midu" placeholder="输入空气密度的大小" style="border:0px;border-bottom:#000000 1px solid;" /></td>
-										<td><input id="fengzu" name="fengzu" placeholder="输入风阻的大小" style="border:0px;border-bottom:#000000 1px solid;" /></td>
+										<td><input id="zhiliang" name="zhiliang" placeholder="输入精氨酸摄入量" style="border:0px;border-bottom:#000000 1px solid;" /></td>
+										<td><input id="jiaodu" name="jiaodu" placeholder="输入酪氨酸摄入量" style="border:0px;border-bottom:#000000 1px solid;" /></td>
+										<td><input id="midu" name="midu" placeholder="输入睡眠时间" style="border:0px;border-bottom:#000000 1px solid;" /></td>
+										<td><input id="fengzu" name="fengzu" placeholder="输入冰敷时间" style="border:0px;border-bottom:#000000 1px solid;" /></td>
+										<td><input id="tuina" name="tuina" placeholder="输入肌肉推拿康复时间" style="border:0px;border-bottom:#000000 1px solid;" /></td>
 										<td><input id="predict" style="border:0px;border-bottom:#000000 1px solid;" /></td>
 										<td><button class="btn btn-primary" value="预测" onclick="requestPredict(event)">预测</button></td>
 									</tr>
