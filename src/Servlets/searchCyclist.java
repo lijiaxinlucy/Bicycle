@@ -2,6 +2,9 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -36,29 +39,57 @@ public class searchCyclist extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");//传值编码
+		response.setContentType("text/html;charset=UTF-8");//设置传输编码
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String flagParam,realParam,type,date;
+		String flagParam,realParam;
+		Date date=new Date();
+		DateFormat simDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+		String punString=simDateFormat.format(date);
 		flagParam=request.getParameter("flagParam");//选项
 		realParam=request.getParameter("realParam");//搜索
-		type=(String) request.getParameter("type");
-		date=request.getParameter("date");
-		System.out.println("date="+date);
-		System.out.println("type:"+type);
+		System.out.println("date="+punString);
 		System.out.println("flagParam:"+flagParam);
 		System.out.println("realParam:"+realParam);
 		if(flagParam.equals("areaID")){
+			List<Object[]> cyclist;
 			CyclistsDao cyclistsDao=new CyclistsDao();
-			Cyclists cyclist=new Cyclists();
-			//cyclist=cyclistsDao.selectCyclistByCid(realParam);
-			System.out.println(cyclist.getCName());
-			response.sendRedirect("./selectById.jsp?id="+flagParam);
+			cyclist=cyclistsDao.selectCyclistByCid(realParam,punString);
+			if(cyclist!=null){
+				for(Object[] o:cyclist){
+					System.out.println(o[0]);
+					System.out.println(o[1]);
+					System.out.println(o[2]);
+					System.out.println(o[3]);
+					System.out.println(o[4]);
+					System.out.println(o[5]);
+					System.out.println(o[7]);
+					System.out.println(o[8]);
+					System.out.println(o[9]);
+					
+				}
+			}
+			else System.out.println("cant find");
 		}
 		else if(flagParam.equals("name")){
-			CyclistsDao cyclistsDao=new CyclistsDao();
-			List<Cyclists> c=cyclistsDao.selectCyclistsByCName(realParam);
-			//System.out.println(cyclist.getCName());
+			List<Object[]> c;
+			CyclistsDao cyclistsDao1=new CyclistsDao();
+			c=cyclistsDao1.selectCyclistsByCName(realParam,punString);
+			if(c!=null){
+				for(Object[] o:c){
+					System.out.println(o[0]);
+					System.out.println(o[1]);
+					System.out.println(o[2]);
+					System.out.println(o[3]);
+					System.out.println(o[4]);
+					System.out.println(o[5]);
+					System.out.println(o[7]);
+					System.out.println(o[8]);
+					System.out.println(o[9]);
+			}
 		}
 	}
+}
 		
 	
 

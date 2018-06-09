@@ -11,7 +11,6 @@ public class DBConnection {
 		Configuration cfg=new Configuration();
         cfg.configure("hibernate.cfg.xml");  
         factory=cfg.buildSessionFactory();
-        
         System.out.println("init hibernate sucess!!!");
 	}
 	

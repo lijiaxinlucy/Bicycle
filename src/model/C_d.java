@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "c_d")//数据库里的c_ph表
+@Table(name = "c_d")//数据库里的c_d表
 public class C_d {
 	
 	@Id

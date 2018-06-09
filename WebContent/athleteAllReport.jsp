@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -60,9 +60,9 @@ div {
 				</div>
 				<div>
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="./HeadCoach.jsp">运动员管理</a></li>
-						<li ><a href="./User.jsp">用户管理</a></li>
-						<li><a href="./athleteAllReport.jsp">运动员整体分析报告</a></li>
+						<li><a href="./HeadCoach.jsp">运动员管理</a></li>
+						<li><a href="./User.jsp">用户管理</a></li>
+						<li class="active"><a href="./athleteAllReport.jsp">运动员整体分析报告</a></li>
 					</ul>
 				</div>
 			</div>
@@ -91,10 +91,9 @@ div {
 									<!-- /input-group -->
 								</form>
 							</div>
-							<%Date date=new Date(); %>
 							<div class="btn-group pull-left">
 								<!--  时间输入输出框 -->
-								<form class="navbar-form navbar-right" action="./showAllOneDay"
+								<form class="navbar-form navbar-right" action="./showOneDay"
 									method="post" role="search">
 									<div class="input-group">
 										<input type="date" id="startdate" class="form-control"
@@ -106,7 +105,7 @@ div {
 							<div style="height:500px;width:100%;overflow:auto;"align="center">
 							<table class="table" style="margin-bottom: 80px;">
 								<thead bgcolor="#afeeee">
-									<tr >
+									<tr>
 										<th>ID</th>
 										<th>姓名</th>
 										<th>年龄</th>
@@ -118,8 +117,9 @@ div {
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
+									<tr >
 										<% 
+					Date date=new Date();
 					DateFormat simDateFormat=new SimpleDateFormat("yyyy-MM-dd");
 					String punString=simDateFormat.format(date);
 					System.out.println(punString);
@@ -145,9 +145,9 @@ div {
 													<span class="caret"></span>
 												</button>
 												<ul class="dropdown-menu" role="menu">
-													<li><a href="./update?id=1">修改</a></li>
+													<li><a href="./ShowPlace?id=1">修改</a></li>
 													<li class="divider"></li>
-													<li><a href="./Delete?id=2">删除</a></li>
+													<li><a href="./DeletePlace?id=2">删除</a></li>
 												</ul>
 											</div>
 										</td>
@@ -162,7 +162,8 @@ div {
 				<!-- /block -->
 			</div>
 		</div>
-	</div></div>
+	</div>
+	</div>
 	<!--/.fluid-container-->
 	<script src="vendors/jquery-1.9.1.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>

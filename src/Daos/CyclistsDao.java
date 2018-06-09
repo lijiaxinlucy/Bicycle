@@ -29,32 +29,38 @@ public class CyclistsDao {
 		return obj;
 	}
 	
-	public List<Object[]> selectCyclistByCid(String cid){//通过cid找到唯一的那个运动员
+	public List<Object[]> selectCyclistByCid(String cid,String date){//通过cid找到唯一的那个运动员
 		String hql="select cy.CId,cy.CName,cy.Age,n.NDate,"
 				+ "n.Suger,n.Protein,n.Fat,n.Salt,"
 				+ "n.Bs,n.Rbp,n.Energy,n.Speed,c.NId "
 				+ "from NTable as n,C_n as c,Cyclists as cy"
-				+ " where CId=:cid "
+				+ " where c.CId=:cid and date_format(n.NDate,'%Y-%m-%d')=:date "
 				+ "and n.NId=c.NId and cy.CId=c.CId";//13
 		Session session=DBConnection.getFactory().openSession();
-		Query<Cyclists> query=session.createQuery(hql);
+		Query<Object[]> query=session.createQuery(hql);
 		query.setString("cid", cid);
-		List<Cyclists> obj=query.list();
-		//return (Cyclists) obj;
-		//if(obj!=null && !obj.isEmpty())
-			//return obj.get(0);
-		//else return null;
-		return null;
+		query.setString("date", date);
+		List<Object[]> obj=query.list();
+		if(obj!=null && !obj.isEmpty())
+			return obj;
+		else return null;
 		
 	}
-	public static List<Cyclists> selectCyclistsByCName(String CName){//通过cname找到所有的运动员（可能重名）
-		String hql="from Cyclists where Cname=:cname";
+	public List<Object[]> selectCyclistsByCName(String CName,String date){//通过cname找到所有的运动员（可能重名）
+		String hql="select cy.CId,cy.CName,cy.Age,n.NDate,"
+				+ "n.Suger,n.Protein,n.Fat,n.Salt,"
+				+ "n.Bs,n.Rbp,n.Energy,n.Speed,c.NId "
+				+ "from NTable as n,C_n as c,Cyclists as cy"
+				+ " where cy.CName=:cname and date_format(n.NDate,'%Y-%m-%d')=:date "
+				+ "and n.NId=c.NId and cy.CId=c.CId";//13
 		Session session=DBConnection.getFactory().openSession();
-		Query<Cyclists> query=session.createQuery(hql);
+		Query<Object[]> query=session.createQuery(hql);
 		query.setString("cname", CName);
-		List<Cyclists> obj=query.list();
-		return obj;
-		
+		query.setString("date", date);
+		List<Object[]> obj=query.list();
+		if(obj!=null && !obj.isEmpty())
+			return obj;
+		else return null;
 	}
 	
 	

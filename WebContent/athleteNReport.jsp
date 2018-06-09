@@ -200,12 +200,8 @@
 					</div>
 					<div>
 						<ul class="nav navbar-nav">
-							<li class="active">
-								<a href="./NutriologyCoach.jsp">运动员管理</a>
-							</li>
-							<li>
-								<a>运动员营养学分析报告</a>
-							</li>
+							<li ><a href="./NutriologyCoach.jsp">运动员管理</a></li>
+							<li class="active"><a>运动员营养学分析报告</a></li>
 						</ul>
 					</div>
 				</div>

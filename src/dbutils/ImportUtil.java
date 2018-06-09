@@ -199,7 +199,6 @@ public class ImportUtil {
 					CallableStatement callsta = conn.prepareCall(call_sp);
 					////////////////////////////// 设置存储过程的输入参数
 					callsta.setString(1, feilds[0]);
-
 					SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 					java.util.Date d = null;
 					try {

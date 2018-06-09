@@ -45,8 +45,11 @@ public class loginServlet extends HttpServlet {
 		Query<Users> query = session.createQuery(hql);//用session对象查询
 		query.setString("ids", id);//
 		query.setString("password", password);
-		
 		List<Users> obj = query.list();
+		if(obj==null){
+			
+		}
+		else
 		for(Users user:obj){
 			String name=user.getUserName();
 			String userid=user.getUserId();
@@ -65,17 +68,17 @@ public class loginServlet extends HttpServlet {
 				query3.setString("roleids", roleid);
 				List<Roles> obj3=query3.list();
 				for(Roles role:obj3){//根据不同的角色进入不同的学科主页
-					if(role.getRoleName().equals("NutriologyCoach"))
+					if(role.getRoleName().equals("营养学科教练"))
 					{
 						response.sendRedirect("./NutriologyCoach.jsp");
 					}
-					else if(role.getRoleName().equals("RehabilitationCoach")){
+					else if(role.getRoleName().equals("康复学科教练")){
 						response.sendRedirect("./RehabilitationCoach.jsp");
 					}
-					else if(role.getRoleName().equals("DynamicsCoach")){
+					else if(role.getRoleName().equals("力学学科教练")){
 						response.sendRedirect("./DynamicsCoach.jsp");
 					}
-					else if(role.getRoleName().equals("HeadCoach")){
+					else if(role.getRoleName().equals("总教练")){
 						response.sendRedirect("./HeadCoach.jsp");
 					}
 					else {

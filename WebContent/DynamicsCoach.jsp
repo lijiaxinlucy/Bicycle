@@ -76,7 +76,7 @@
 						<div class="block-content collapse in">
 							<div class="span12">
 								<div class="btn-group pull-right">
-									<form class="navbar-form navbar-right" action="./searchCyclist?date=<%=date %>" method="post" role="search">
+									<form class="navbar-form navbar-right" action="./searchCyclist" method="post" role="search">
 										<div class="input-group">
 											<select name="flagParam">
 												<option value="areaID">按运动员ID查找</option>

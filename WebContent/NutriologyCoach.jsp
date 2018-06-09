@@ -76,7 +76,7 @@
 						<div class="block-content collapse in">
 							<div class="span12">
 								<div class="btn-group pull-right">
-									<form class="navbar-form navbar-right" action="./searchCyclist?date=<%=date %>" method="post" role="search">
+									<form class="navbar-form navbar-right" action="./searchCyclist" method="post" role="search">
 										<div class="input-group">
 											<select name="flagParam">
 												<option value="areaID">按运动员ID查找</option>
@@ -93,12 +93,10 @@
 								<div class="btn-group pull-left">
 								<form  action="./insertData" method="post" enctype="multipart/form-data">
 									<input  class="form-control" type="file" id="id1" name="name1" value="选择文件">
-									 <input  type="submit" class="btn btn-default">批量添加 
-									<i class="icon-plus icon-white"></i>
+									 <input  type="submit" class="btn btn-default" value="导入">	 
 									
 								</form>
 								</div>
-								
 								<div class="btn-group pull-left"> 
 									<!--  时间输入输出框 -->
 									<form class="navbar-form navbar-right" action="./showOneDay" method="post" role="search">
@@ -241,12 +239,10 @@
 		                var table = document.getElementById(tableId);
 		                var tbody = table.tBodies[0];
 		                var tr = tbody.rows;
-		         
 		                var trValue = new Array();
 		                for (var i=0; i<tr.length; i++ ) {
 		                    trValue[i] = tr[i];  //将表格中各行的信息存储在新建的数组中
 		                }
-		         
 		                if (tbody.sortCol == Idx) {
 		                    trValue.reverse(); //如果该列已经进行排序过了，则直接对其反序排列
 		                } else {
@@ -257,12 +253,10 @@
 		                        return value1.localeCompare(value2);
 		                    });
 		                }
-		         
 		                var fragment = document.createDocumentFragment();  //新建一个代码片段，用于保存排序后的结果
 		                for (var i=0; i<trValue.length; i++ ) {
 		                    fragment.appendChild(trValue[i]);
 		                }
-		         
 		                tbody.appendChild(fragment); //将排序的结果替换掉之前的值
 		                tbody.sortCol = Idx;
 		            }
@@ -287,10 +281,7 @@
 		</div>
 		<!-- 图表到此结束 -->
 		<script>
-
 		window.onload = function () {
-			
-
 			var speed11 =   document.getElementsByClassName("speed11");
 			var name11=   document.getElementsByClassName("name11");
 			var chart1arr1= new Array();

@@ -190,10 +190,10 @@
 					</div>
 					<div>
 						<ul class="nav navbar-nav">
-							<li class="active">
+							<li >
 								<a href="./RehabilitationCoach.jsp">运动员管理</a>
 							</li>
-							<li>
+							<li class="active">
 								<a>运动员康复学分析报告</a>
 							</li>
 						</ul>

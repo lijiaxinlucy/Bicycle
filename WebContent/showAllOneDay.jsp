@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -105,21 +105,21 @@ div {
 							</div>
 							<div style="height:500px;width:100%;overflow:auto;"align="center">
 							<table class="table" style="margin-bottom: 80px;">
-								<thead bgcolor="#afeeee">
-									<tr >
+								<thead>
+									<tr>
 										<th>ID</th>
 										<th>姓名</th>
 										<th>年龄</th>
-										<th>时间</th>
+										<th>运动成绩</th>
 										<th>营养学科训练数据</th>
 										<th>康复学科训练数据</th>
 										<th>力学学科训练数据</th>
-										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
+									<tr class="info">
 										<% 
+					
 					DateFormat simDateFormat=new SimpleDateFormat("yyyy-MM-dd");
 					String punString=simDateFormat.format(date);
 					System.out.println(punString);
@@ -132,7 +132,7 @@ div {
 										<td><%=obj[0] %></td>
 										<td><%=obj[1] %></td>
 										<td><%=obj[2] %></td>
-										<td><%=obj[3] %></td>
+										<td>the Bird</td>
 										<td><a href="./Nutriologyathlete.jsp?id=<%=obj[0] %>">点击查看</a></td>
 										<td><a href="./Rehabilitationathlete.jsp?id=<%=obj[0] %>">点击查看</a></td>
 										<td><a href="./Dynamicsathlete.jsp?id=<%=obj[0] %>">点击查看</a></td>
@@ -145,9 +145,9 @@ div {
 													<span class="caret"></span>
 												</button>
 												<ul class="dropdown-menu" role="menu">
-													<li><a href="./update?id=1">修改</a></li>
+													<li><a href="./ShowPlace?id=1">修改</a></li>
 													<li class="divider"></li>
-													<li><a href="./Delete?id=2">删除</a></li>
+													<li><a href="./DeletePlace?id=2">删除</a></li>
 												</ul>
 											</div>
 										</td>

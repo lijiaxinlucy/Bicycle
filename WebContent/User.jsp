@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -60,8 +60,8 @@ div {
 				</div>
 				<div>
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="./HeadCoach.jsp">运动员管理</a></li>
-						<li ><a href="./User.jsp">用户管理</a></li>
+						<li ><a href="./HeadCoach.jsp">运动员管理</a></li>
+						<li class="active"><a href="./User.jsp">用户管理</a></li>
 						<li><a href="./athleteAllReport.jsp">运动员整体分析报告</a></li>
 					</ul>
 				</div>
@@ -71,7 +71,7 @@ div {
 				<!-- block -->
 				<div class="block">
 					<div class="navbar navbar-inner block-header">
-						<div class="muted pull-left">运动员信息</div>
+						<div class="muted pull-left">用户信息</div>
 					</div>
 					<div class="block-content collapse in">
 						<div class="span12">
@@ -81,8 +81,8 @@ div {
 									method="post" role="search">
 									<div class="input-group">
 										<select name="flagParam">
-											<option value="areaID">按运动员ID查找</option>
-											<option value="name">按运动员姓名查找</option>
+											<option value="areaID">按用户ID查找</option>
+											<option value="name">按用户姓名查找</option>
 										</select> <input type="text" name="realParam" class="form-control"
 											placeholder="请输入关键字"> <span class="input-group-btn">
 											<button class="btn btn-default" type="submit">查找</button>
@@ -91,68 +91,51 @@ div {
 									<!-- /input-group -->
 								</form>
 							</div>
-							<%Date date=new Date(); %>
 							<div class="btn-group pull-left">
-								<!--  时间输入输出框 -->
-								<form class="navbar-form navbar-right" action="./showAllOneDay"
-									method="post" role="search">
-									<div class="input-group">
-										<input type="date" id="startdate" class="form-control"
-											width=2px name="date">
-										<button class="btn btn-default" type="submit">查找日期</button>
-									</div>
-								</form>
 							</div>
 							<div style="height:500px;width:100%;overflow:auto;"align="center">
 							<table class="table" style="margin-bottom: 80px;">
 								<thead bgcolor="#afeeee">
-									<tr >
+									<tr>
 										<th>ID</th>
 										<th>姓名</th>
-										<th>年龄</th>
-										<th>时间</th>
-										<th>营养学科训练数据</th>
-										<th>康复学科训练数据</th>
-										<th>力学学科训练数据</th>
-										<th></th>
+										<th>角色</th>
+										<th>密码</th>
+										<th>操作</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<% 
-					DateFormat simDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-					String punString=simDateFormat.format(date);
-					System.out.println(punString);
-					NTableDao nTableDao=new NTableDao();
-					List<Object[]> result=nTableDao.getNTable(punString);
-					//System.out.println(result.size());
-					if(result!=null){
-					for(Object[] obj: result ){
+					<% 
+					UserDao userDao=new UserDao();
+					List<Object[]> list=userDao.getU();
+					for(Object[] o:list){
 					%>
-										<td><%=obj[0] %></td>
-										<td><%=obj[1] %></td>
-										<td><%=obj[2] %></td>
-										<td><%=obj[3] %></td>
-										<td><a href="./Nutriologyathlete.jsp?id=<%=obj[0] %>">点击查看</a></td>
-										<td><a href="./Rehabilitationathlete.jsp?id=<%=obj[0] %>">点击查看</a></td>
-										<td><a href="./Dynamicsathlete.jsp?id=<%=obj[0] %>">点击查看</a></td>
+										<td><%=o[0] %></td>
+										<td><%=o[1] %></td>
+										<td><%=o[2] %></td>
+										<td><%=o[3] %></td>
 										<td>
 											<div class="btn-group">
-												<button type="button" class="btn btn-primary">操作</button>
+												<button type="button" class="btn btn-primary">更改角色</button>
 												<button type="button"
 													class="btn btn-primary dropdown-toggle"
 													data-toggle="dropdown">
 													<span class="caret"></span>
 												</button>
 												<ul class="dropdown-menu" role="menu">
-													<li><a href="./update?id=1">修改</a></li>
+													<li><a href="./changeToHead?userid=<%=o[0]%>">总教练</a></li>
 													<li class="divider"></li>
-													<li><a href="./Delete?id=2">删除</a></li>
+													<li><a href="./changeToN?userid=<%=o[0]%>">营养学科教练</a></li>
+													<li class="divider"></li>
+													<li><a href="./changeToD?userid=<%=o[0]%>">力学学科教练</a></li>
+													<li class="divider"></li>
+													<li><a href="./changeToR?userid=<%=o[0]%>">康复学科教练</a></li>
 												</ul>
 											</div>
 										</td>
 									</tr>
-									<%}
+									<%
 					}%>
 								</tbody>
 							</table>
@@ -162,7 +145,8 @@ div {
 				<!-- /block -->
 			</div>
 		</div>
-	</div></div>
+	</div>
+</div>
 	<!--/.fluid-container-->
 	<script src="vendors/jquery-1.9.1.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>

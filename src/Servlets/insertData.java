@@ -49,7 +49,6 @@ public class insertData extends HttpServlet {
 			continue;		
 		}
 		System.out.println("---------------------");
-
 		ImportUtil importUtil = new ImportUtil();
 		while(!((aline=bufferedReader.readLine()).equals(boundary))&&aline.length()>0){
 			System.out.println("aline:"+aline);
