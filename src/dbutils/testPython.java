@@ -104,5 +104,45 @@ public class testPython {
 		}
 		return stringBuilder.toString();
 	}
+	public String testAll(double a, double b, double c, double d,double e,//这个是预测方法
+			double f,double g,double h,double i,double j,double k,double l,double m) throws IOException {
+		// System.out.println("start");
+		String testdata = "[";
+		testdata += a + ",";
+		testdata += b + ",";
+		testdata += c + ",";
+		testdata += d + ",";
+		testdata += e + ",";
+		testdata += f + ",";
+		testdata += g + ",";
+		testdata += h + ",";
+		testdata += i + ",";
+		testdata += j + ",";
+		testdata += k + ",";
+		testdata += l + ",";
+		testdata += m + "]";
+		String command = "python d://tbpnet.py --testdata " + testdata;
+		System.out.println(command);
+		Process pr = Runtime.getRuntime().exec(command);
+		// System.out.println("测试点1");
+		InputStreamReader stdin=new InputStreamReader(pr.getInputStream());
+		LineNumberReader input=new LineNumberReader(stdin);
+        String line;
+        StringBuilder stringBuilder = new StringBuilder();
+        System.out.println("waiting...");
+        while((line=input.readLine())!=null ){
+        	stringBuilder.append(line);
+        	stringBuilder.append("\r\n");
+            System.out.println(line);//得到输出
+        }
+		System.out.println(stringBuilder.toString());
+		stdin.close();
+		try {
+			pr.waitFor();
+		} catch (InterruptedException ee) {
+			ee.printStackTrace();
+		}
+		return stringBuilder.toString();
+	}
 
 }

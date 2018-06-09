@@ -12,6 +12,7 @@
 <link href="assets/styles.css" rel="stylesheet" media="screen">
 <script src="vendors/jquery-1.9.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<script charset="utf-8" src="js/loginjs.js"></script>
 </head>
 <body id="login" style="background-color:rgb(217, 237, 247);">
 <br><br><br><br>
@@ -22,10 +23,10 @@
     			border: 1px solid rgba(119, 125, 199, 0.97);">
 			<h3 class="form-signin-heading">欢迎登录</h3>
 			<h3 class="form-signin-heading">——自行车训练数据平台</h3>
-			<input type="text" class="input-block-level" name="id"  placeholder="请输入id"> 
-			<input type="password" class="input-block-level" placeholder="请输入密码"
-				name="password" > <label class="input-block-level"> 
-			<input class="btn btn-large btn-primary"  type="submit"  value="登录">
+			<input type="text" id="id" class="input-block-level" name="id"  placeholder="请输入id"> 
+			<input type="password" id="pwd" class="input-block-level" placeholder="请输入密码"
+				name="password" /> <label class="input-block-level"> 
+			<button type="button" class="btn btn-large btn-primary"  onclick="userLogin();" >登录</button>
 		    <button class="btn btn-large " style="margin-left: 120px;"
 				type="reset">重置</button>
 		</form>

@@ -1,7 +1,6 @@
 package Servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -14,23 +13,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-
 import Daos.CyclistsDao;
-import model.Cyclists;
+import Daos.UserDao;
 
 /**
- * Servlet implementation class searchCyclist
+ * Servlet implementation class searchUser
  */
-@WebServlet("/searchCyclist")
-public class searchCyclist extends HttpServlet {
+@WebServlet("/searchUser")
+public class searchUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public searchCyclist() {
+    public searchUser() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,24 +39,20 @@ public class searchCyclist extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");//传值编码
 		response.setContentType("text/html;charset=UTF-8");//设置传输编码
 		response.setCharacterEncoding("utf-8");
+		
 		String flagParam,realParam;
-		Date date=new Date();
-		DateFormat simDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-		String punString=simDateFormat.format(date);
 		flagParam=request.getParameter("flagParam");//选项
 		realParam=request.getParameter("realParam");//搜索
-		System.out.println("date="+punString);
 		System.out.println("flagParam:"+flagParam);
 		System.out.println("realParam:"+realParam);
 		if(flagParam.equals("areaID")){
-			response.sendRedirect("./showNCyclistById.jsp?realParam="+realParam);
+			response.sendRedirect("./showUserById.jsp?realParam="+realParam);	
 		}
 		else if(flagParam.equals("name")){
 			System.out.println("realParam==="+realParam);
-			response.sendRedirect("./showNCyclistByName.jsp?realParam="+URLEncoder.encode(realParam));
+			response.sendRedirect("./showUserByName.jsp?realParam="+URLEncoder.encode(realParam));
+		}
 	}
-}
-		
 	
 
 	/**
