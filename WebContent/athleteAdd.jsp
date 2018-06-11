@@ -37,6 +37,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<i class="icon-user"></i> Login <i class="caret"></i>
                                 </a>
                                 <ul class="dropdown-menu">
+                                <%String userid=request.getParameter("id"); %>
+									<li>
+										<a tabindex="-1" href="./updatePassword.jsp?userid=<%=userid%>">修改密码</a>
+									</li>
                                     <li>
                                         <a tabindex="-1" href="./hello.jsp">退出登录</a>
                                     </li>

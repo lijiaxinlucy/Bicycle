@@ -42,7 +42,14 @@
 								<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="icon-user"></i> Login <i class="caret"></i>
 								</a>
+								
 								<ul class="dropdown-menu">
+								<%String userid=request.getParameter("userid");
+								System.out.println(userid);
+								%>
+									<li>
+										<a tabindex="-1" href="./updatePassword.jsp?userid=<%=userid%>">修改密码</a>
+									</li>
 									<li>
 										<a tabindex="-1" href="./hello.jsp">退出登录</a>
 									</li>

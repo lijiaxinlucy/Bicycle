@@ -79,19 +79,19 @@ public class loginServlet extends HttpServlet {
 						if(role.getRoleName().equals("营养学科教练"))
 						{
 							//response.sendRedirect("./NutriologyCoach.jsp");
-							redirecturl = "./NutriologyCoach.jsp";
+							redirecturl = "./NutriologyCoach.jsp?userid="+id;
 						}
 						else if(role.getRoleName().equals("康复学科教练")){
 							//response.sendRedirect("./RehabilitationCoach.jsp");
-							redirecturl="./RehabilitationCoach.jsp";
+							redirecturl="./RehabilitationCoach.jsp?userid="+id;
 						}
 						else if(role.getRoleName().equals("力学学科教练")){
 							//response.sendRedirect("./DynamicsCoach.jsp");
-							redirecturl = "./DynamicsCoach.jsp";
+							redirecturl = "./DynamicsCoach.jsp?userid="+id;
 						}
 						else if(role.getRoleName().equals("总教练")){
 							//response.sendRedirect("./HeadCoach.jsp");
-							redirecturl="./HeadCoach.jsp";
+							redirecturl="./HeadCoach.jsp?userid="+id;
 						}
 						else {
 							//response.sendRedirect("./error.jsp");

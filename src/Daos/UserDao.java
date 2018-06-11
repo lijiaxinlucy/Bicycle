@@ -130,4 +130,24 @@ public class UserDao {
 			return obj;
 		else return null;
 	}
+	public void updatePassword(String password, String newPassword, String userid) {
+		// TODO Auto-generated method stub
+		String sql1="select Password from Users where UserID=:userid";
+		String sql="update Users set Password =:password where UserID=:userid";
+		Session session=DBConnection.getFactory().openSession();
+		Query<String> query1=session.createQuery(sql1);
+		query1.setString("userid", userid);
+		List<String> string=query1.list();
+		for(String s:string){
+			if(s.equals(password)){
+				Query query=session.createQuery(sql);
+				query.setString("password", newPassword);
+				query.setString("userid", userid);
+				org.hibernate.Transaction transaction=session.beginTransaction();
+				query.executeUpdate();
+				transaction.commit();
+			}
+		}
+		session.close();
+	}
 }

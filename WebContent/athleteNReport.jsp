@@ -191,6 +191,9 @@
 									<i class="icon-user"></i> Login <i class="caret"></i>
 								</a>
 								<ul class="dropdown-menu">
+								<li>
+										<a tabindex="-1" href="./updatePassword.jsp?">修改密码</a>
+									</li>
 									<li>
 										<a tabindex="-1" href="./hello.jsp">退出登录</a>
 									</li>

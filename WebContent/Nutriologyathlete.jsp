@@ -50,6 +50,9 @@
 								<i class="icon-user"></i> Login <i class="caret"></i>
                                 </a>
                                 <ul class="dropdown-menu">
+                                <li>
+										<a tabindex="-1" href="./updatePassword.jsp?">修改密码</a>
+									</li>
                                     <li>
                                         <a tabindex="-1" href="./Logout">退出登录</a>
                                     </li>
@@ -156,7 +159,10 @@
 										</button>
 										<ul class="dropdown-menu" role="menu">
 											<li>
-												<a data-toggle="modal" href="#changeathlete" onclick="changeCallback">修改</a>
+												<!-- <a data-toggle="modal" href="#changeathlete" onclick="changeCallback">修改</a> -->
+												<a data-toggle="modal" href="./updateNathlete.jsp?id=<%=list[1] %>&nid=<%=str %>
+												&speed=<%=list[4] %>&sugar=<%=list[5] %>&protein=<%=list[6] %>&fat=<%=list[7] %>&salt=<%=list[8] %>
+												&bs=<%=list[9] %>&rbp=<%=list[10] %>&energy=<%=list[11] %>">修改</a>
 											</li>
 											<li class="divider"></li>
 											<li><a href="./deleteCyclist?nid=<%=str %>&id=<%=list[1] %>">删除</a></li>												
@@ -169,42 +175,6 @@
      	                	response.sendRedirect("./error.jsp");}
    	                  %>
 			</tbody></table></div></div> </div></div></div></div>
-	       <!-- 模态框（Modal） -->
-			<div class="modal fade" id="changeathlete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" overflow="auto" style="display:none">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">修改运动信息</h4>
-				<form class="form-horizontal" action="./updateOneAthMsg?cid=<%=id %>" method="post">
-					<div class="modal-body">
-					<div class="control-group"><label class="control-label" for="input01">速度km/m</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="speed"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">糖类摄入量/g</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="suger"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">蛋白质摄入量/g</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="protein"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">脂肪摄入量/g</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="fat"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">矿物盐和水/ml</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="salt"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">血糖含量mmol/L</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="bs"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">视黄醇结合蛋白mg/l</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="rbp"> </div></div>
-					<div class="control-group"><label class="control-label" for="input01">营养日摄入量/千卡</label><div class="controls"> 
-					<input type="text" required="requered"  class="input-xlarge" name="energy"> </div></div>
-					</div>
-					<!--表单到此结束。，点击提交把表单上传即可-->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-							<button type="button" class="btn btn-primary">提交更改</button></div>
-				</form></div>
-				<!-- /.modal-content -->
-				</div>
-				<!-- /.modal -->
-			</div></div>
-			<% %>
 		<!-- 模态框（Modal） -->
 		<div class="modal fade" id="addathlete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" overflow="auto" style="display:none">
 			<div class="modal-dialog">

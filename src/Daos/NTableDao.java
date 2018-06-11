@@ -159,15 +159,26 @@ public class NTableDao {//营养学科方法
 		session.close();
 	}
 	
-	public void updateOneAthMsg(String cid,final String date,final int suger,final int protein,final int fat,final int salt,
-			final double bs,final double rbp,final int energy,final double speed) throws ParseException{
+	public int updateOneAthMsg(int nid, int sugar, int protein, int fat, int salt,
+			 double bs, double rbp, int energy, double speed){
 		Session session=DBConnection.getFactory().openSession();
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟  
-		java.util.Date tDate=sdf.parse(date);  		
-		final java.sql.Date time=new java.sql.Date(tDate.getTime());
-		Transaction ts = session.beginTransaction();
-		
-		
+		String sql="update NTable set Speed=:speed,Suger=:sugar,Protein=:protein,Fat=:fat,Salt=:salt,"
+				+ "Bs=:bs,Rbp=:rbp,Energy=:energy where NId=:nid";
+		Query query=session.createQuery(sql);
+		query.setInteger("nid", nid);
+		query.setInteger("sugar", sugar);
+		query.setInteger("protein", protein);
+		query.setInteger("fat", fat);
+		query.setInteger("salt", salt);
+		query.setDouble("bs", bs);
+		query.setDouble("rbp", rbp);
+		query.setDouble("speed", speed);
+		query.setInteger("energy", energy);
+		org.hibernate.Transaction transaction=session.beginTransaction();
+		query.executeUpdate();
+		transaction.commit();
+		session.close();
+		return 0;
 	}
 }
 
